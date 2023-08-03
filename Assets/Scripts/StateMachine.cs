@@ -9,6 +9,8 @@ public class StateMachine
     public JumpState jumpState;
     public IdleState idleState;
 
+    public event Action<IState> stateChanged;
+
     public StateMachine(PlayerController player)
     {
         this.walkState = new WalkState(player);
@@ -27,6 +29,8 @@ public class StateMachine
         CurrentState.Exit();
         CurrentState = nextState;
         nextState.Enter();
+
+        stateChanged?.Invoke(nextState);
     }
 
     public void Update()
