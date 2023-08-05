@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
      
     [SerializeField] bool _isGround = true;
 
+    private PlayerInput playerInput;
     private StateMachine _playerStateMachine;
     public StateMachine PlayerStateMachine => _playerStateMachine;
     public bool IsGruound => _isGround;
@@ -27,5 +28,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _playerStateMachine?.Update();
+    }
+
+    void Jump()
+    {
+        if (_isGround == true && playerInput.IsJumping == true)
+        {
+            _playerStateMachine.Initialize(PlayerStateMachine.jumpState);
+        }
     }
 }
