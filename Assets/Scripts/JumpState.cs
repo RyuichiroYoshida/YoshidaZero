@@ -1,6 +1,9 @@
+using UnityEngine;
 public class JumpState : IState
 {
     private PlayerController player;
+
+    private PlayerInput playerInput;
 
     public JumpState (PlayerController player)
     {
@@ -10,12 +13,20 @@ public class JumpState : IState
     public void Enter()
     {
         // 最初に状態に入ったときに実行されるコード
+        Debug.Log("JumpStart");
     }
 
     public void Update()
     {
         // ここに、別の状態に遷移するための条件が成立しているかどうかを
         // 検出するためのロジックを追加する
+        if (player.IsGruound)
+        {
+            if (playerInput.XInput == 0 && playerInput.YInput == 0)
+            {
+                player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.idleState);
+            }
+        }
     }
 
     public void Exit()

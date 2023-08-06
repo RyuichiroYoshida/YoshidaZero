@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour
      
     [SerializeField] bool _isGround = true;
 
-    private PlayerInput playerInput;
+    Rigidbody2D _rb;
+
+    private PlayerInput _playerInput;
     private StateMachine _playerStateMachine;
     public StateMachine PlayerStateMachine => _playerStateMachine;
     public bool IsGruound => _isGround;
@@ -23,18 +25,27 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _playerStateMachine.Initialize(PlayerStateMachine.idleState);
+        _rb = GetComponent<Rigidbody2D>();
+        _playerInput = GetComponent<PlayerInput>();
+
     }
 
     void Update()
     {
         _playerStateMachine?.Update();
+        Move();
     }
 
     void Jump()
     {
-        if (_isGround == true && playerInput.IsJumping == true)
+        if (_isGround == true && _playerInput.IsJumping == true)
         {
             _playerStateMachine.Initialize(PlayerStateMachine.jumpState);
         }
+    }
+
+    void Move()
+    {
+        _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _moveSpeed * _playerInput.YInput).normalized;
     }
 }

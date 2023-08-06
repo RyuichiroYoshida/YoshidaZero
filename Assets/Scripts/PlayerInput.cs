@@ -8,6 +8,8 @@ public class PlayerInput : MonoBehaviour
     float _xInput = 0f;
     float _yInput = 0f;
 
+    public float XInput => _xInput;
+    public float YInput => _yInput;
     public bool IsJumping { get => _isJumping; set { _isJumping = value;} }
 
     void Update()
