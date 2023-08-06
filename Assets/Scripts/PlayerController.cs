@@ -46,6 +46,11 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _moveSpeed * _playerInput.YInput).normalized;
+        _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _rb.velocity.y).normalized;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
     }
 }

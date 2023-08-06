@@ -14,13 +14,19 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
+        PlayerMove();
         PlayerAction();
     }
 
-    public void PlayerAction()
+    public void PlayerMove()
     {
         _xInput = Input.GetAxisRaw("Horizontal");
         _yInput = Input.GetAxisRaw("Vertical");
         _isJumping = Input.GetButton("Jump");
+    }
+
+    public void PlayerAction()
+    {
+
     }
 }
