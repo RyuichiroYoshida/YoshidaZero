@@ -22,6 +22,12 @@ public class IdleState : IState
         {
             player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.jumpState);
         }
+
+        if (player.IsGruound && player)
+        {
+
+        }
+
     }
 
     public void Exit()

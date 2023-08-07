@@ -3,8 +3,6 @@ public class JumpState : IState
 {
     private PlayerController player;
 
-    private PlayerInput playerInput;
-
     public JumpState (PlayerController player)
     {
         this.player = player;
@@ -22,7 +20,7 @@ public class JumpState : IState
         // 検出するためのロジックを追加する
         if (player.IsGruound)
         {
-            if (playerInput.XInput == 0 && playerInput.YInput == 0)
+            if (player.PlayerInput.XInput == 0 && player.PlayerInput.YInput == 0)
             {
                 player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.idleState);
             }

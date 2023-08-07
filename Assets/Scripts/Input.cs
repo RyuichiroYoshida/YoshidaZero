@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour
+public class Input : MonoBehaviour
 {
     bool _isJumping = false;
     float _xInput = 0f;
@@ -20,9 +20,9 @@ public class PlayerInput : MonoBehaviour
 
     public void PlayerMove()
     {
-        _xInput = Input.GetAxisRaw("Horizontal");
-        _yInput = Input.GetAxisRaw("Vertical");
-        _isJumping = Input.GetButton("Jump");
+        _xInput = UnityEngine.Input.GetAxisRaw("Horizontal");
+        _yInput = UnityEngine.Input.GetAxisRaw("Vertical");
+        IsJumping = UnityEngine.Input.GetButton("Jump");
     }
 
     public void PlayerAction()
