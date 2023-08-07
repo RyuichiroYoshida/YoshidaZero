@@ -8,14 +8,16 @@ public class StateMachine
     public WalkState walkState;
     public JumpState jumpState;
     public IdleState idleState;
+    public AttackState attackState;
 
-    public event Action<IState> stateChanged;
+    public event Action<IState> StateChanged; // eventはデリゲートとかで使うやつ、詳細はデリゲートをしっかり理解した後で
 
     public StateMachine(PlayerController player)
     {
         this.walkState = new WalkState(player);
         this.jumpState = new JumpState(player);
         this.idleState = new IdleState(player);
+        this.attackState = new AttackState(player);
     }
 
     public void Initialize(IState startingState)
@@ -30,7 +32,7 @@ public class StateMachine
         CurrentState = nextState;
         nextState.Enter();
 
-        stateChanged?.Invoke(nextState);
+        StateChanged?.Invoke(nextState);
     }
 
     public void Update()

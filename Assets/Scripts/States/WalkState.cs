@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class WalkState : IState
 {
-    private PlayerController player;
+    private PlayerController _player;
 
     public WalkState (PlayerController player)
     {
-        this.player = player;
+        this._player = player;
     }
 
     public void Enter()
     {
         // 最初に状態に入ったときに実行されるコード
-        Debug.Log("walkStart");
+        Debug.Log("WalkStart");
     }
 
     public void Update()
@@ -20,16 +20,16 @@ public class WalkState : IState
         // ここに、別の状態に遷移するための条件が成立しているかどうかを
         // 検出するためのロジックを追加する
         
-        if (player != null)
+        if (_player != null)
         {
-            if (!player.IsGruound)
+            if (!_player.IsGruound)
             {
-                player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.jumpState);
+                _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.jumpState);
             }
 
-            if (player.PlayerInput.XInput == 0)
+            if (_player.PlayerInput.XInput == 0)
             {
-                player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.idleState);
+                _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.idleState);
             }
         }
     }

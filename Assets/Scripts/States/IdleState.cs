@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class IdleState : IState
 {
-    private PlayerController player;
+    private PlayerController _player;
 
     public IdleState (PlayerController player)
     {
-        this.player = player;
+        this._player = player;
     }
     public void Enter()
     {
@@ -18,16 +18,16 @@ public class IdleState : IState
     {
         // ここに、別の状態に遷移するための条件が成立しているかどうかを
         // 検出するためのロジックを追加する
-        if (player != null)
+        if (_player != null)
         {
-            if (!player.IsGruound)
+            if (!_player.IsGruound)
             {
-                player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.jumpState);
+                _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.jumpState);
             }
 
-            if (player.IsGruound && player.PlayerInput.XInput != 0)
+            if (_player.IsGruound && _player.PlayerInput.XInput != 0)
             {
-                player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.walkState);
+                _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.walkState);
             }
         }
     }

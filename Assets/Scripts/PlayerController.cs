@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D)), RequireComponent(typeof(Collider2D))]
@@ -9,11 +7,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _jumpPower = 5;
     [SerializeField] float _jumpCoolTime = 2;
     [SerializeField] float _jumpCoolTimer = 0;
-     
+    [SerializeField] float _attackCoolTime = 1;
+    [SerializeField] float _attackCoolTimer = 0;
+
     [SerializeField] bool _isGround = true;
 
     Rigidbody2D _rb;
 
+    private Attack _playerAttack;
+    public Attack PlayerAttack => _playerAttack;
     private Input _playerInput;
     public Input PlayerInput => _playerInput;
     private StateMachine _playerStateMachine;
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         _playerStateMachine?.Update(); // PlayerStateMachineがNullではないときに、常時StateMachineを呼び出す
         Move();
         Jump();
+        Attack();
     }
 
     /// <summary>Jump挙動管理メソッド</summary>
@@ -54,6 +57,16 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _rb.velocity.y);
+    }
+
+    void Attack()
+    {
+        _attackCoolTimer -= Time.deltaTime;
+        if (PlayerInput.IsAttacking && _attackCoolTimer <= 0)
+        {
+            _attackCoolTimer = _attackCoolTime;
+
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
