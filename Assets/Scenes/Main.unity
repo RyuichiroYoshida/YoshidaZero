@@ -257,7 +257,6 @@ GameObject:
   - component: {fileID: 859768040}
   - component: {fileID: 859768039}
   - component: {fileID: 859768041}
-  - component: {fileID: 859768042}
   - component: {fileID: 859768043}
   - component: {fileID: 859768044}
   - component: {fileID: 859768045}
@@ -351,21 +350,8 @@ MonoBehaviour:
   _moveSpeed: 5
   _jumpPower: 5
   _jumpCoolTime: 2
+  _jumpCoolTimer: 0
   _isGround: 1
---- !u!114 &859768042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859768038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aafd4b3b561104442b667197d8c3fb41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyDamage: 10
-  _playerHp: 10
 --- !u!114 &859768043
 MonoBehaviour:
   m_ObjectHideFlags: 0

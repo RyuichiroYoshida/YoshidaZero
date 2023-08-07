@@ -18,11 +18,18 @@ public class JumpState : IState
     {
         // ここに、別の状態に遷移するための条件が成立しているかどうかを
         // 検出するためのロジックを追加する
-        if (player.IsGruound)
+        if (player != null)
         {
-            if (player.PlayerInput.XInput == 0 && player.PlayerInput.YInput == 0)
+            if (player.IsGruound)
             {
-                player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.idleState);
+                if (player.PlayerInput.XInput == 0)
+                {
+                    player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.idleState);
+                }
+                else
+                {
+                    player.PlayerStateMachine.TransitionTo(player.PlayerStateMachine.walkState);
+                }
             }
         }
     }

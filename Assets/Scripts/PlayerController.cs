@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _moveSpeed = 5;
     [SerializeField] float _jumpPower = 5;
     [SerializeField] float _jumpCoolTime = 2;
+    [SerializeField] float _jumpCoolTimer = 0;
      
     [SerializeField] bool _isGround = true;
 
@@ -21,11 +22,11 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _playerStateMachine = new StateMachine(this);
+        _playerStateMachine = new StateMachine(this); // PlayerStateMachine初期化
     }
     void Start()
     {
-        _playerStateMachine.Initialize(PlayerStateMachine.idleState);
+        _playerStateMachine.Initialize(PlayerStateMachine.idleState); // 最初はIdleStateから始めるのでStartで呼ぶ
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<Input>();
 
@@ -33,20 +34,23 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _playerStateMachine?.Update();
+        _playerStateMachine?.Update(); // PlayerStateMachineがNullではないときに、常時StateMachineを呼び出す
         Move();
         Jump();
     }
 
+    /// <summary>Jump挙動管理メソッド</summary>
     void Jump()
     {
-        if (_isGround == true && PlayerInput.IsJumping == true)
+        _jumpCoolTimer -= Time.deltaTime;
+        if (_isGround == true && PlayerInput.IsJumping == true && _jumpCoolTimer <= 0) // 接地している、ジャンプ入力がある、クールダウンタイマーが0以下
         {
+            _jumpCoolTimer = _jumpCoolTime;
             _rb.velocity = new Vector2(0, _jumpPower);
-            _playerStateMachine.Initialize(PlayerStateMachine.jumpState);
         }
     }
 
+    /// <summary>水平移動管理メソッド</summary>
     void Move()
     {
         _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _rb.velocity.y);
