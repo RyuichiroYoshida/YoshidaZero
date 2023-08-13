@@ -916,7 +916,14 @@ MonoBehaviour:
   _jumpCoolTimer: 0
   _attackCoolTime: 1
   _attackCoolTimer: 0
+  _comboTime1: 3
+  _comboTimer1: 0
+  _comboTime2: 2
+  _comboTimer2: 0
   _isGround: 1
+  _isAttacking: 0
+  _comboTrigger1: 0
+  _comboTrigger2: 0
 --- !u!114 &859768043
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -29,6 +29,11 @@ public class IdleState : IState
             {
                 _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.walkState);
             }
+
+            if (_player.IsAttacking)
+            {
+                _player.PlayerStateMachine.TransitionTo (_player.PlayerStateMachine.attackState);
+            }
         }
     }
 

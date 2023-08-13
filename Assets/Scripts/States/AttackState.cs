@@ -13,10 +13,12 @@ public class AttackState : IState
     {
         // 最初に状態に入ったときに実行されるコード
         Debug.Log("AttackStart");
+        _player.IsAttacking = false;
     }
     public void Update()
     {
         // フレーム単位のロジックで、新しい状態に移行するための条件を含む
+        _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.idleState);
     }
     public void Exit()
     {

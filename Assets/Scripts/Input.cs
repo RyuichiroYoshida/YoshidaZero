@@ -1,17 +1,16 @@
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class Input : MonoBehaviour
 {
     float _xInput = 0f;
     float _yInput = 0f;
     bool _isJumping = false;
-    bool _isAttacking = false;
+    bool _isAttack = false;
 
     public float XInput => _xInput;
     public float YInput => _yInput;
     public bool IsJumping { get => _isJumping; set { _isJumping = value;} }
-    public bool IsAttacking { get => _isAttacking; set { _isAttacking = value;} }
+    public bool IsAttack { get => _isAttack; set { _isAttack = value;} }
 
     void Update()
     {
@@ -28,6 +27,6 @@ public class Input : MonoBehaviour
 
     public void PlayerAction()
     {
-        IsAttacking = UnityEngine.Input.GetButton("Fire1");
+        IsAttack = UnityEngine.Input.GetButton("Fire1");
     }
 }
