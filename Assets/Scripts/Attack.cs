@@ -12,4 +12,20 @@ public class Attack : MonoBehaviour
     {
         
     }
+
+    public void PLayerAttack()
+    {
+        Vector2 mousePosition = UnityEngine.Input.mousePosition;
+        Vector2 target = Camera.main.ScreenToWorldPoint(mousePosition);
+        float distance = Vector2.Distance(this.transform.position, target);
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+        }
+    }
 }
