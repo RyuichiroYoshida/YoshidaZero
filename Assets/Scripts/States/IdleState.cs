@@ -35,6 +35,7 @@ public class IdleState : IState
             if (_player.IsAttacking)
             {
                 _player.PlayerStateMachine.TransitionTo (_player.PlayerStateMachine.attackState);
+                _player.PlayerAnimController.PlayerAttackAnim(true);
             }
         }
     }

@@ -3,10 +3,9 @@ using UnityEngine;
 public class AnimController : MonoBehaviour
 {
     Animator _playerAnimator;
-    Input _playerInput;
+
     void Start()
     {
-        _playerInput = GetComponent<Input>();
         _playerAnimator = GetComponent<Animator>();
     }
     
@@ -18,8 +17,13 @@ public class AnimController : MonoBehaviour
     {
         _playerAnimator.SetBool("IsJumping", jump);
     }
-    public void PlayerAttackAnim()
+    public void PlayerAttackAnim(bool attack)
     {
+        _playerAnimator.SetBool("Attack1", attack);
+    }
 
+    public void PlayerComboAttack1(bool attack)
+    {
+        _playerAnimator.SetBool("Attack2", attack);
     }
 }

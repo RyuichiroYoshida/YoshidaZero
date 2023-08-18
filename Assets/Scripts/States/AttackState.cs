@@ -18,10 +18,14 @@ public class AttackState : IState
     public void Update()
     {
         // フレーム単位のロジックで、新しい状態に移行するための条件を含む
-        _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.idleState);
+        if (_player.PlayerAttack.AttackEnd() == false)
+        {
+            _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.idleState);
+        }
     }
     public void Exit()
     {
         // 状態を抜けるときに実行されるコード   
+        _player.PlayerAnimController.PlayerAttackAnim(false);
     }
 }
