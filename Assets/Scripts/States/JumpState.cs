@@ -37,5 +37,6 @@ public class JumpState : IState
     public void Exit()
     {
         // 状態を抜けるときに実行されるコード
+        _player.PlayerAnimController.PlayerJumpAnim(false);
     }
 }

@@ -25,6 +25,7 @@ public class WalkState : IState
             if (!_player.IsGruound)
             {
                 _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.jumpState);
+                _player.PlayerAnimController.PlayerJumpAnim(true);
             }
 
             if (_player.PlayerInput.XInput == 0)
@@ -37,5 +38,6 @@ public class WalkState : IState
     public void Exit()
     {
         // 状態を抜けるときに実行されるコード
+        _player.PlayerAnimController.PlayerMoveAnim(false);
     }
 }

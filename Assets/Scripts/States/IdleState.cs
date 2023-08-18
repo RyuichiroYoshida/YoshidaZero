@@ -23,11 +23,13 @@ public class IdleState : IState
             if (!_player.IsGruound)
             {
                 _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.jumpState);
+                _player.PlayerAnimController.PlayerJumpAnim(true);
             }
 
             if (_player.IsGruound && _player.PlayerInput.XInput != 0)
             {
                 _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.walkState);
+                _player.PlayerAnimController.PlayerMoveAnim(true);
             }
 
             if (_player.IsAttacking)

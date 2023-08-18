@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D _rb;
 
+    private AnimController _playerAnimController;
+    public AnimController PlayerAnimController => _playerAnimController;
     private Attack _playerAttack;
     public Attack PlayerAttack => _playerAttack;
     private Input _playerInput;
@@ -32,6 +34,13 @@ public class PlayerController : MonoBehaviour
     public bool ComboTrigger1 { get => _comboTrigger1; set { _comboTrigger1 = value;} }
     public bool ComboTrigger2 { get => _comboTrigger2; set { _comboTrigger2 = value;} }
 
+    enum PlayerAttackEnum
+    {
+        combo1 = 0,
+        combo2 = 1,
+        combo3 = 2,
+    }
+
     private void Awake()
     {
         _playerStateMachine = new StateMachine(this); // PlayerStateMachine‰Šú‰»
@@ -41,7 +50,7 @@ public class PlayerController : MonoBehaviour
         _playerStateMachine.Initialize(PlayerStateMachine.idleState); // Å‰‚ÍIdleState‚©‚çn‚ß‚é‚Ì‚ÅStart‚ÅŒÄ‚Ô
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<Input>();
-
+        _playerAnimController = GetComponent<AnimController>();
     }
 
     void Update()
@@ -79,6 +88,7 @@ public class PlayerController : MonoBehaviour
             _attackCoolTimer = _attackCoolTime;
             _comboTimer1 = 0;
             _isAttacking = true;
+            
             if (PlayerInput.IsAttack && _comboTimer1 <= _comboTime1)
             {
                 _comboTrigger1 = true;
