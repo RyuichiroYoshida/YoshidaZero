@@ -3,15 +3,8 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     [SerializeField] float _attackDamage = 10;
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    bool _attackEnd = false;
+    public bool AttackEnd { get => _attackEnd; set { _attackEnd = value; } }
 
     public void PLayerAttack()
     {
@@ -20,9 +13,9 @@ public class Attack : MonoBehaviour
         float distance = Vector2.Distance(this.transform.position, target);
     }
 
-    public bool AttackEnd()
+    public void AttackAnimEnd()
     {
-        return false;
+        AttackEnd = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

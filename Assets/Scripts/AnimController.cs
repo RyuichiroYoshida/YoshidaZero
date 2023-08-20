@@ -19,11 +19,11 @@ public class AnimController : MonoBehaviour
     }
     public void PlayerAttackAnim(bool attack)
     {
-        _playerAnimator.SetBool("Attack1", attack);
+        _playerAnimator.SetBool("Attack", attack);
     }
 
     public void PlayerComboAttack1(bool attack)
     {
-        _playerAnimator.SetBool("Attack2", attack);
+        _playerAnimator.SetBool("ComboAttack1", attack);
     }
 }

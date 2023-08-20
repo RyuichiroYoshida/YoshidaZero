@@ -18,7 +18,7 @@ public class AttackState : IState
     public void Update()
     {
         // フレーム単位のロジックで、新しい状態に移行するための条件を含む
-        if (_player.PlayerAttack.AttackEnd() == false)
+        if (_player.PlayerAttack.AttackEnd == true)
         {
             _player.PlayerStateMachine.TransitionTo(_player.PlayerStateMachine.idleState);
         }
@@ -27,5 +27,6 @@ public class AttackState : IState
     {
         // 状態を抜けるときに実行されるコード   
         _player.PlayerAnimController.PlayerAttackAnim(false);
+        _player.PlayerAttack.AttackEnd = false;
     }
 }
