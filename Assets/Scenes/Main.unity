@@ -225,6 +225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 172904800}
   - component: {fileID: 172904807}
+  - component: {fileID: 172904808}
   - component: {fileID: 172904806}
   - component: {fileID: 172904805}
   - component: {fileID: 172904804}
@@ -246,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172904799}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.78, y: -3.7260137, z: -0.03702841}
+  m_LocalPosition: {x: -8.45, y: -3.7260137, z: -0.03702841}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -351,6 +352,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackDamage: 10
+  _dashSpeed: 100
+  _isHitting: 0
+  _isAttacking: 0
 --- !u!114 &172904805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,6 +405,18 @@ MonoBehaviour:
   _isAttacking: 0
   _comboTrigger1: 0
   _comboTrigger2: 0
+--- !u!114 &172904808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172904799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a5935f1e3577684da7e570301c91cd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &203952252
 GameObject:
   m_ObjectHideFlags: 0
