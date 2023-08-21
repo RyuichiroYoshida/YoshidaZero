@@ -49,10 +49,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        _playerStateMachine?.Update(); // PlayerStateMachineがNullではないときに、常時StateMachineを呼び出す
         Move();
         Jump();
         Attack();
+        _playerStateMachine?.Update(); // PlayerStateMachineがNullではないときに、常時StateMachineを呼び出す
     }
 
     /// <summary>Jump挙動管理メソッド</summary>
