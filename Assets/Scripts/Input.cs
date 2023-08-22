@@ -6,11 +6,13 @@ public class Input : MonoBehaviour
     float _yInput = 0f;
     bool _isJumping = false;
     bool _isAttack = false;
+    bool _isDashing = false;
 
     public float XInput => _xInput;
     public float YInput => _yInput;
     public bool IsJumping { get => _isJumping; set { _isJumping = value;} }
     public bool IsAttack { get => _isAttack; set { _isAttack = value;} }
+    public bool IsDashing => _isDashing;
 
     void Update()
     {
@@ -28,5 +30,10 @@ public class Input : MonoBehaviour
     public void PlayerAction()
     {
         IsAttack = UnityEngine.Input.GetButton("Fire1");
+    }
+
+    public void PlayerDash()
+    {
+        _isDashing = UnityEngine.Input.GetButton("Fire3");
     }
 }

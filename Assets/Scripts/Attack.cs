@@ -1,29 +1,44 @@
+using System.Collections;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
     [SerializeField] float _attackDamage = 10;
     [SerializeField] float _dashSpeed = 100;
-    bool _attackEnd = false;
+    [SerializeField] float _dashAttackSpeed = 10;
+    [SerializeField] float _dashAttackTimer = 0;
+    [SerializeField] float _dashAttackCoolTime = 5;
+    [SerializeField] float _addDashTime = 2;
     [SerializeField] bool _isHitting = false;
     [SerializeField] bool _isAttacking = false;
+    bool _attackEnd = false;
+    Rigidbody2D _rb;
     Transform _playerTransform;
     Vector2 _mousePosition;
     Vector2 _target;
+    Input _playerInput;
     public bool AttackEnd { get => _attackEnd; set { _attackEnd = value; } }
     public Vector2 MousePosition => _mousePosition;
 
     void Start()
     {
         _playerTransform = GetComponent<Transform>();
+        _rb = GetComponent<Rigidbody2D>();
+        _playerInput = GetComponent<Input>();
     }
     void Update()
     {
+        _dashAttackTimer -= Time.deltaTime;
+        if (UnityEngine.Input.GetButton("Fire3") && _dashAttackTimer <= 0)
+        {
+            PlayerDashAttack();
+        }
+
         float testDistanceX = _target.x - _playerTransform.position.x;
         float testDistanceY = _target.y - _playerTransform.position.y;
         Vector2 testDistance = new Vector2(testDistanceX, testDistanceY);
 
-        print(testDistance);
+        //print(testDistance);
         PlayerMousePosition();
         if (UnityEngine.Input.GetButton("Fire2"))
         {
@@ -56,6 +71,22 @@ public class Attack : MonoBehaviour
         _target = Camera.main.ScreenToWorldPoint(_mousePosition);
     }
 
+    public void PlayerDashAttack()
+    {
+        print("DashStart");
+        //StartCoroutine(DashAttack(_addDashTime));
+        if (_playerTransform.localScale.x == 1)
+        {
+            //_rb.AddForce(Vector2.right * _dashAttackSpeed, ForceMode2D.Impulse);
+            Vector2 dashRange = new Vector2(_playerTransform.localPosition.x + 2, 0) * Time.deltaTime;
+            _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, dashRange, _dashSpeed);
+        }
+        else
+        {
+            _rb.AddForce(Vector2.left * _dashAttackSpeed, ForceMode2D.Impulse);
+        }
+    }
+
     public void AttackAnimEnd()
     {
         AttackEnd = true;
@@ -75,5 +106,20 @@ public class Attack : MonoBehaviour
         {
             _isHitting = true;
         }
+    }
+
+    IEnumerator DashAttack(float time)
+    {
+        _dashAttackTimer = _dashAttackCoolTime;
+        if (_playerTransform.localScale.x == 1)
+        {
+            _rb.AddForce(Vector2.right * _dashAttackSpeed);
+        }
+        else
+        {
+            _rb.AddForce(Vector2.left * _dashAttackSpeed);
+        }
+        yield return new WaitForSeconds(time);
+        _rb.velocity = Vector3.zero;
     }
 }
