@@ -8,11 +8,7 @@ public class ZangekiController : MonoBehaviour
 
     void Start()
     {
-
-    }
-
-    void Update()
-    {
-        
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.velocity = Vector2.right * _zangekiSpeed;
     }
 }
