@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    [SerializeField] GameObject _zangekiPrefab;
     [SerializeField] float _attackDamage = 10;
     [SerializeField] float _dashSpeed = 100;
     [SerializeField] float _dashAttackSpeed = 10;
@@ -16,7 +17,7 @@ public class Attack : MonoBehaviour
     Transform _playerTransform;
     Vector2 _mousePosition;
     Vector2 _target;
-    Input _playerInput;
+    PlayerController _playerController;
     public bool AttackEnd { get => _attackEnd; set { _attackEnd = value; } }
     public Vector2 MousePosition => _mousePosition;
 
@@ -24,7 +25,7 @@ public class Attack : MonoBehaviour
     {
         _playerTransform = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody2D>();
-        _playerInput = GetComponent<Input>();
+        _playerController = GetComponent<PlayerController>();
     }
     void Update()
     {
@@ -47,6 +48,24 @@ public class Attack : MonoBehaviour
         else
         {
             _isAttacking = false;
+        }
+
+        PlayerZangeki();
+    }
+
+    public void PlayerZangeki()
+    {
+        if (_playerController.IsAttacking)
+        {
+            if (_playerTransform.localScale.x == 1)
+            {
+                Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x + 1, _playerTransform.position.y), Quaternion.identity);
+            }
+            else
+            {
+
+                Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x - 1, _playerTransform.position.y), Quaternion.Euler(180, 0, 0));
+            }
         }
     }
 

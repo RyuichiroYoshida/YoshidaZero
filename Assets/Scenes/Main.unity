@@ -351,6 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70738d767091ac46ab92b216768f91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _zangekiPrefab: {fileID: 7329054999697786721, guid: 45e0cef25b4a4f241bcd61b35add02d4, type: 3}
   _attackDamage: 10
   _dashSpeed: 1000
   _dashAttackSpeed: 100
