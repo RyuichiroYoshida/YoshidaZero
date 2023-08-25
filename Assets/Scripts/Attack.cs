@@ -64,9 +64,10 @@ public class Attack : MonoBehaviour
             else
             {
 
-                Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x - 1, _playerTransform.position.y), Quaternion.Euler(180, 0, 0));
+                Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x - 1, _playerTransform.position.y), Quaternion.Euler(0, 0, 180));
             }
         }
+        _playerController.IsAttacking = false;
     }
 
     public void PlayerAttack()
