@@ -72,3 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 ProjectSettings/
 Assets/Plugins/
+Assets/Resources.meta
+Assets/Resources/

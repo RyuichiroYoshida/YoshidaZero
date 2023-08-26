@@ -98,12 +98,12 @@ public class Attack : MonoBehaviour
         if (_playerTransform.localScale.x == 1)
         {
             //_rb.AddForce(Vector2.right * _dashAttackSpeed, ForceMode2D.Impulse);
-            Vector2 dashRange = new Vector2(_playerTransform.localPosition.x + 2, 0) * Time.deltaTime;
+            Vector2 dashRange = new Vector2(_playerTransform.position.x + 2, _playerTransform.position.y) * Time.deltaTime;
             _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, dashRange, _dashSpeed);
         }
         else
         {
-            _rb.AddForce(Vector2.left * _dashAttackSpeed, ForceMode2D.Impulse);
+            _rb.velocity = Vector2.left * _dashAttackSpeed;
         }
     }
 
