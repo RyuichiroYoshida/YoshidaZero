@@ -9,6 +9,7 @@ public class AttackDOTween : MonoBehaviour
     [SerializeField] float _moveRange = 10;
     [SerializeField] float _moveTime = 0.5f;
     [SerializeField] float _moveSpeed = 10;
+    [SerializeField] float _xInput = 0;
     bool _isHitting = false;
     bool _isAttacking = false;
     Rigidbody2D _rb;
@@ -19,25 +20,25 @@ public class AttackDOTween : MonoBehaviour
 
     void Update()
     {
+        PlayerMove();
         if (UnityEngine.Input.GetButton("Fire3"))
         {
             StartCoroutine(Attack());
             //DOTweenAttack();
         }
-        PlayerMove();
     }
 
     void PlayerMove()
     {
-        float xInput = UnityEngine.Input.GetAxisRaw("Horizontal");
-        _rb.velocity = new Vector2(_rb.velocity.x * _moveSpeed * xInput, _rb.velocity.y);
+        _xInput = UnityEngine.Input.GetAxisRaw("Horizontal");
+        _rb.velocity = new Vector2(_rb.velocity.x * _moveSpeed * _xInput, _rb.velocity.y);
     }
 
     void DOTweenAttack()
     {
         DOTween.To(() => transform.position, x
                       => transform.position = x,
-                      new Vector3(_moveRange, 0, 0), _moveTime)
+                      new Vector3(_moveRange * _xInput, 0, 0), _moveTime)
                       .SetRelative(true)
                       .SetEase(Ease.OutCirc);
         // this.transform.DOLocalMoveX(_moveRange, _moveTime).SetEase(Ease.OutCirc);

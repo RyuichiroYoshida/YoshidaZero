@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class Attack : MonoBehaviour
 {
@@ -12,12 +13,15 @@ public class Attack : MonoBehaviour
     [SerializeField] float _addDashTime = 2;
     [SerializeField] bool _isHitting = false;
     [SerializeField] bool _isAttacking = false;
+    [SerializeField] float _doMoveRange = 5;
+    [SerializeField] float _doMoveTime = 3;
     bool _attackEnd = false;
     Rigidbody2D _rb;
     Transform _playerTransform;
     Vector2 _mousePosition;
     Vector2 _target;
     PlayerController _playerController;
+    Input _playerInput;
     public bool AttackEnd { get => _attackEnd; set { _attackEnd = value; } }
     public Vector2 MousePosition => _mousePosition;
 
@@ -26,20 +30,20 @@ public class Attack : MonoBehaviour
         _playerTransform = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody2D>();
         _playerController = GetComponent<PlayerController>();
+        _playerInput = GetComponent<Input>();
     }
     void Update()
     {
         _dashAttackTimer -= Time.deltaTime;
         if (UnityEngine.Input.GetButton("Fire3") && _dashAttackTimer <= 0)
         {
-            PlayerDashAttack();
+            StartCoroutine(DashAttack());
         }
 
         float testDistanceX = _target.x - _playerTransform.position.x;
         float testDistanceY = _target.y - _playerTransform.position.y;
         Vector2 testDistance = new Vector2(testDistanceX, testDistanceY);
 
-        //print(testDistance);
         PlayerMousePosition();
         if (UnityEngine.Input.GetButton("Fire2"))
         {
@@ -91,22 +95,6 @@ public class Attack : MonoBehaviour
         _target = Camera.main.ScreenToWorldPoint(_mousePosition);
     }
 
-    public void PlayerDashAttack()
-    {
-        print("DashStart");
-        //StartCoroutine(DashAttack(_addDashTime));
-        if (_playerTransform.localScale.x == 1)
-        {
-            //_rb.AddForce(Vector2.right * _dashAttackSpeed, ForceMode2D.Impulse);
-            Vector2 dashRange = new Vector2(_playerTransform.position.x + 2, _playerTransform.position.y) * Time.deltaTime;
-            _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, dashRange, _dashSpeed);
-        }
-        else
-        {
-            _rb.velocity = Vector2.left * _dashAttackSpeed;
-        }
-    }
-
     public void AttackAnimEnd()
     {
         AttackEnd = true;
@@ -128,18 +116,12 @@ public class Attack : MonoBehaviour
         }
     }
 
-    IEnumerator DashAttack(float time)
+    IEnumerator DashAttack()
     {
         _dashAttackTimer = _dashAttackCoolTime;
-        if (_playerTransform.localScale.x == 1)
-        {
-            _rb.AddForce(Vector2.right * _dashAttackSpeed);
-        }
-        else
-        {
-            _rb.AddForce(Vector2.left * _dashAttackSpeed);
-        }
-        yield return new WaitForSeconds(time);
-        _rb.velocity = Vector3.zero;
+        _isAttacking = true;
+        this.transform.DOLocalMoveX(_doMoveRange * _playerInput.XInput, _doMoveTime).SetRelative(true).SetEase(Ease.OutCirc);
+        yield return new WaitForSeconds(_doMoveTime);
+        _isAttacking = false;
     }
 }
