@@ -22,7 +22,7 @@ public class Attack : MonoBehaviour
     Vector2 _target;
     PlayerController _playerController;
     Input _playerInput;
-    public bool AttackEnd { get => _attackEnd; set { _attackEnd = value; } }
+    public bool AttackEnd { get => _attackEnd; set => _attackEnd = value; }
     public Vector2 MousePosition => _mousePosition;
 
     void Start()

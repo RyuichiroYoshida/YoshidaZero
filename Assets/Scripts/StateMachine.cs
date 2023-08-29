@@ -10,7 +10,7 @@ public class StateMachine
     public IdleState idleState;
     public AttackState attackState;
 
-    public event Action<IState> StateChanged; // eventはデリゲートとかで使うやつ、詳細はデリゲートをしっかり理解した後で
+    public event Action<IState> StateChanged;
 
     public StateMachine(PlayerController player)
     {

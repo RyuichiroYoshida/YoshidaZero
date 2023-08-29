@@ -20,4 +20,13 @@ public class ZangekiController : MonoBehaviour
         }
         Destroy(gameObject, 0.5f);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            GameManager.instance.KillCount();
+            Destroy(collision.gameObject);
+        }
+    }
 }

@@ -28,6 +28,6 @@ public class GameManager : MonoBehaviour
 
     public void KillCount()
     {
-
+        _killCount++;
     }
 }
