@@ -6,11 +6,11 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] GameObject _zangekiPrefab;
     [SerializeField] float _attackDamage = 10;
-    [SerializeField] float _dashSpeed = 100;
-    [SerializeField] float _dashAttackSpeed = 10;
+    [SerializeField] float _debugMoveSpeed = 100;
+
     [SerializeField] float _dashAttackTimer = 0;
     [SerializeField] float _dashAttackCoolTime = 5;
-    [SerializeField] float _addDashTime = 2;
+
     [SerializeField] bool _isHitting = false;
     [SerializeField] bool _isAttacking = false;
     [SerializeField] float _doMoveRange = 5;
@@ -34,7 +34,9 @@ public class Attack : MonoBehaviour
     }
     void Update()
     {
+        // DashAttackのクールタイム計測用
         _dashAttackTimer -= Time.deltaTime;
+
         if (UnityEngine.Input.GetButton("Fire3") && _dashAttackTimer <= 0)
         {
             StartCoroutine(DashAttack());
@@ -47,7 +49,7 @@ public class Attack : MonoBehaviour
         PlayerMousePosition();
         if (UnityEngine.Input.GetButton("Fire2"))
         {
-            PlayerAttack();
+            DebugMove();
         }
         else
         {
@@ -57,6 +59,9 @@ public class Attack : MonoBehaviour
         PlayerZangeki();
     }
 
+    /// <summary>
+    /// 左クリック入力を受け取り、向いている方向に斬撃を飛ばす
+    /// </summary>
     public void PlayerZangeki()
     {
         if (_playerController.IsAttacking)
@@ -74,7 +79,10 @@ public class Attack : MonoBehaviour
         _playerController.IsAttacking = false;
     }
 
-    public void PlayerAttack()
+    /// <summary>
+    /// プレイヤーを右クリックの座標に戻す（デバッグ用）
+    /// </summary>
+    public void DebugMove()
     {
         if (_isHitting)
         {
@@ -85,7 +93,7 @@ public class Attack : MonoBehaviour
         {
             _isAttacking = true;
             float distance = Vector2.Distance(this.transform.position, _target);
-            _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, _target, _dashSpeed * Time.deltaTime);
+            _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, _target, _debugMoveSpeed * Time.deltaTime);
         }
     }
 
