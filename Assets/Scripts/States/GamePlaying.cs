@@ -16,6 +16,8 @@ public class GamePlaying : IState
     public void Update()
     {
         // フレーム単位のロジックで、新しい状態に移行するための条件を含む
+        if (_stateManager.StageManager.StageClear)
+            _stateManager.GameState.TransitionTo(_stateManager.GameState.gameEnd);
     }
     public void Exit()
     {

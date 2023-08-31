@@ -30,13 +30,12 @@ public class PlayerController : MonoBehaviour
     private StateMachine _playerStateMachine;
     public StateMachine PlayerStateMachine => _playerStateMachine;
     public bool IsGruound => _isGround;
-    public bool IsAttacking { get => _isAttacking; set { _isAttacking = value;} }
-    public bool ComboTrigger1 { get => _comboTrigger1; set { _comboTrigger1 = value;} }
-    public bool ComboTrigger2 { get => _comboTrigger2; set { _comboTrigger2 = value;} }
+    public bool IsAttacking { get => _isAttacking; set => _isAttacking = value; }
+    public bool ComboTrigger1 { get => _comboTrigger1; set => _comboTrigger1 = value; }
+    public bool ComboTrigger2 { get => _comboTrigger2; set => _comboTrigger2 = value; }
 
     void Start()
     {
-        /*_playerStateMachine.Initialize(PlayerStateMachine.idleState);*/ // 最初はIdleStateから始めるのでStartで呼ぶ
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<Input>();
         _playerAnimController = GetComponent<AnimController>();
@@ -48,7 +47,6 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         Attack();
-        /*_playerStateMachine?.Update();*/ // PlayerStateMachineがNullではないときに、常時StateMachineを呼び出す
     }
 
     /// <summary>Jump挙動管理メソッド</summary>
