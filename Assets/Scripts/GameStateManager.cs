@@ -12,11 +12,11 @@ public class GameStateManager : MonoBehaviour
 
     void Start()
     {
-        
+        _gameState.Initialize(GameState.gameStart);
     }
 
     void Update()
     {
-        
+        _gameState?.Update(); // GameStateMachine‚ªNull‚Å‚Í‚È‚¢‚Æ‚«‚ÉAíStateMachine‚ğŒÄ‚Ño‚·
     }
 }
