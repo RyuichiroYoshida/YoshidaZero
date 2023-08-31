@@ -34,10 +34,6 @@ public class PlayerController : MonoBehaviour
     public bool ComboTrigger1 { get => _comboTrigger1; set { _comboTrigger1 = value;} }
     public bool ComboTrigger2 { get => _comboTrigger2; set { _comboTrigger2 = value;} }
 
-    private void Awake()
-    {
-        _playerStateMachine = new StateMachine(this); // PlayerStateMachine‰Šú‰»
-    }
     void Start()
     {
         /*_playerStateMachine.Initialize(PlayerStateMachine.idleState);*/ // Å‰‚ÍIdleState‚©‚çn‚ß‚é‚Ì‚ÅStart‚ÅŒÄ‚Ô

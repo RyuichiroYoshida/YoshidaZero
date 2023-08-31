@@ -12,7 +12,7 @@ public class StateMachine
 
     public event Action<IState> StateChanged;
 
-    public StateMachine(PlayerController player)
+    public StateMachine(GameStateManager gameState)
     {
         //this.walkState = new WalkState(player);
         //this.jumpState = new JumpState(player);
