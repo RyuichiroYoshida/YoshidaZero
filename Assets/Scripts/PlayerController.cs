@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-        _playerStateMachine.Initialize(PlayerStateMachine.idleState); // 最初はIdleStateから始めるのでStartで呼ぶ
+        /*_playerStateMachine.Initialize(PlayerStateMachine.idleState);*/ // 最初はIdleStateから始めるのでStartで呼ぶ
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<Input>();
         _playerAnimController = GetComponent<AnimController>();
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
         Move();
         Jump();
         Attack();
-        _playerStateMachine?.Update(); // PlayerStateMachineがNullではないときに、常時StateMachineを呼び出す
+        /*_playerStateMachine?.Update();*/ // PlayerStateMachineがNullではないときに、常時StateMachineを呼び出す
     }
 
     /// <summary>Jump挙動管理メソッド</summary>

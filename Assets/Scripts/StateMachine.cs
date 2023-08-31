@@ -5,19 +5,19 @@ public class StateMachine
 {
     public IState CurrentState { get; private set; }
 
-    public WalkState walkState;
-    public JumpState jumpState;
-    public IdleState idleState;
-    public AttackState attackState;
+    //public WalkState walkState;
+    //public JumpState jumpState;
+    //public IdleState idleState;
+    //public AttackState attackState;
 
     public event Action<IState> StateChanged;
 
     public StateMachine(PlayerController player)
     {
-        this.walkState = new WalkState(player);
-        this.jumpState = new JumpState(player);
-        this.idleState = new IdleState(player);
-        this.attackState = new AttackState(player);
+        //this.walkState = new WalkState(player);
+        //this.jumpState = new JumpState(player);
+        //this.idleState = new IdleState(player);
+        //this.attackState = new AttackState(player);
     }
 
     public void Initialize(IState startingState)
