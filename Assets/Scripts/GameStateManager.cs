@@ -12,12 +12,12 @@ public class GameStateManager : MonoBehaviour
 
     private void Awake()
     {
-        _gameState = new StateMachine(this);
+        _gameState = new StateMachine(this); // StateMachineインスタンス化
     }
 
     void Start()
     {
-        _gameState.Initialize(GameState.gameStart);
+        _gameState.Initialize(GameState.gameStart); // 最初はGameStartステートから始まるので、初期値を入れる
         _sceneManager = GetComponent<SceneManager>();
         _stageManager = GetComponent<StageManager>();
 
