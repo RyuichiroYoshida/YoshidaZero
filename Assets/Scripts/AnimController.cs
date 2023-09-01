@@ -8,7 +8,6 @@ public class AnimController : MonoBehaviour
     {
         _playerAnimator = GetComponent<Animator>();
     }
-    
     public void PlayerMoveAnim(bool walk)
     {
         _playerAnimator.SetBool("IsWalking", walk);

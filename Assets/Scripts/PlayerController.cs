@@ -77,7 +77,6 @@ public class PlayerController : MonoBehaviour
             _comboTimer1 = 0;
             _isAttacking = true;
             PlayerAnimController.PlayerAttackAnim(true);
-            
             if (PlayerInput.IsAttack && _comboTimer1 <= _comboTime1)
             {
                 _comboTrigger1 = true;

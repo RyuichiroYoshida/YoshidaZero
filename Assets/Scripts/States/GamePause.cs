@@ -19,6 +19,6 @@ public class GamePause : IState
     }
     public void Exit()
     {
-        // 状態を抜けるときに実行されるコード   
+        // 状態を抜けるときに実行されるコード
     }
 }

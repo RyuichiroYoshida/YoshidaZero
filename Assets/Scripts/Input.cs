@@ -10,8 +10,8 @@ public class Input : MonoBehaviour
 
     public float XInput => _xInput;
     public float YInput => _yInput;
-    public bool IsJumping { get => _isJumping; set { _isJumping = value;} }
-    public bool IsAttack { get => _isAttack; set { _isAttack = value;} }
+    public bool IsJumping { get => _isJumping; set => _isJumping = value; }
+    public bool IsAttack { get => _isAttack; set => _isAttack = value; }
     public bool IsDashing => _isDashing;
 
     void Update()
