@@ -12,6 +12,7 @@ public class SceneManager : MonoBehaviour
     /// <param name="sceneName">ƒV[ƒ“–¼</param>
     public void SceneChange(string sceneName)
     {
-        _fade.DOFade(0, 1f).onComplete = () => UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        this.gameObject.SetActive(false);
+        _fade.DOFade(1, 5f).onComplete = () => UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
     }
 }
