@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class SceneManager : MonoBehaviour
 {
     [SerializeField] Image _fade;
-
     /// <summary>
     /// ˆø”‚ÌƒV[ƒ“–¼‚É‘JˆÚ‚µ‚Ü‚·
     /// </summary>
