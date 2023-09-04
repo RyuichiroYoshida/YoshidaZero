@@ -12,6 +12,6 @@ public class SceneManager : MonoBehaviour
     public void SceneChange(string sceneName)
     {
         this.gameObject.SetActive(false);
-        _fade.DOFade(1, 5f).onComplete = () => UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        _fade.DOFade(1, 5f).OnComplete(() => UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName));
     }
 }

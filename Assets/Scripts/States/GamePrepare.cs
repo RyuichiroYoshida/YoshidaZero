@@ -16,6 +16,7 @@ public class GamePrepare : IState
     public void Update()
     {
         // フレーム単位のロジックで、新しい状態に移行するための条件を含む
+        _stateManager.GameState.TransitionTo(_stateManager.GameState.gamePause);
     }
     public void Exit()
     {
