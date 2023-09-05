@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent (typeof(SceneManager), typeof(StageManager))]
 public class GameStateManager : MonoBehaviour
 {
+    [SerializeField] GameObject _pausePanel;
     StateMachine _gameState;
     SceneManager _sceneManager;
     StageManager _stageManager;
@@ -19,6 +21,8 @@ public class GameStateManager : MonoBehaviour
 
     void Start()
     {
+        _pausePanel.SetActive(false);
+
         _gameState.Initialize(GameState.gameStart); // 最初はGameStartステートから始まるので、初期値を入れる
         _sceneManager = GetComponent<SceneManager>();
         _stageManager = GetComponent<StageManager>();

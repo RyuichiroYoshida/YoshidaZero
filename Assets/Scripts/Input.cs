@@ -18,11 +18,12 @@ public class Input : MonoBehaviour
 
     void Update()
     {
-        if (_isPause)
-            return;
-        PlayerMove();
-        PlayerAction();
         Pause();
+        if (!_isPause)
+        {
+            PlayerMove();
+            PlayerAction();
+        }
     }
 
     public void PlayerMove()
@@ -44,7 +45,10 @@ public class Input : MonoBehaviour
 
     public void Pause()
     {
+        print(IsPause);
         if (UnityEngine.Input.GetButton("Pause"))
+        {
             _isPause = !_isPause;
+        }
     }
 }
