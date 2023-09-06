@@ -15,6 +15,11 @@ public abstract class EnemyBase : MonoBehaviour
         else
             transform.DOPlay();
     }
+
+    void OnDestroy()
+    {
+        DOTween.KillAll();
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
