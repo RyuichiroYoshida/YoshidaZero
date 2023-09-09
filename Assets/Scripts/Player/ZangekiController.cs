@@ -28,5 +28,11 @@ public class ZangekiController : MonoBehaviour
             GameManager.instance.KillCount();
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.tag == "Bullet")
+        {
+            EnemyBulletController enemyBullet = collision.gameObject.GetComponent<EnemyBulletController>();
+            enemyBullet.FlipX *= -1;
+            enemyBullet.Reflection = true;
+        }
     }
 }
