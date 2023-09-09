@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent (typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyBulletController : MonoBehaviour
 {
     [SerializeField] float _bulletSpeed;
@@ -29,7 +29,7 @@ public class EnemyBulletController : MonoBehaviour
             Destroy(collision.gameObject);
         else if (collision.gameObject.tag == "Wall")
             Destroy(this.gameObject);
-        if (collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.tag == "Enemy" && Reflection)
         {
             GameManager.instance.KillCount();
             Destroy(collision.gameObject);
