@@ -1,9 +1,11 @@
+using System.Collections;
 using UnityEngine;
 
 public class GunEnemyController : EnemyBase
 {
     [SerializeField] float _detectionRange;
     [SerializeField] float _moveSpeed;
+    [SerializeField] float _gunCoolTime;
     [SerializeField] GameObject _bulletPrefab;
     [SerializeField] LayerMask _wallLayer;
     [SerializeField] LayerMask _playerLayer;
@@ -11,6 +13,9 @@ public class GunEnemyController : EnemyBase
     [SerializeField, Tooltip("デバッグ用")] RaycastHit2D _wallHit;
     [SerializeField, Tooltip("デバッグ用")] RaycastHit2D _playerHit;
     Rigidbody2D _rb;
+    float _timer = 0;
+
+    public float FlipValue => _flipValue;
 
     void Start()
     {
@@ -19,6 +24,7 @@ public class GunEnemyController : EnemyBase
 
     void Update()
     {
+        _timer += Time.deltaTime;
         if (_wallHit)
         {
             print("Wall Hit");
@@ -45,10 +51,20 @@ public class GunEnemyController : EnemyBase
 
     void EnemyAttack(float value)
     {
+        // プレイヤー検知用ラインキャスト
         Vector2 _playerLineEnd = new Vector2(transform.position.x + (_detectionRange * value), transform.position.y);
         _playerHit = Physics2D.Linecast(transform.position, _playerLineEnd, _playerLayer);
+        // プレイヤー検知時にその場に停止する
         if (_playerHit)
+        {
             this._rb.velocity = Vector2.zero;
+            if (_timer >= _gunCoolTime)
+            {
+                Instantiate(_bulletPrefab, transform.position, Quaternion.identity);
+                _timer = 0;
+            }
+        }
+        // ラインキャストを可視化
         Debug.DrawLine(transform.position, _playerLineEnd, Color.red);
     }
 }
