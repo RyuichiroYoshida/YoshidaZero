@@ -9,15 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _jumpCoolTimer = 0;
     [SerializeField] float _attackCoolTime = 1;
     [SerializeField] float _attackCoolTimer = 0;
-    [SerializeField] float _comboTime1 = 3;
-    [SerializeField] float _comboTimer1 = 0;
-    [SerializeField] float _comboTime2 = 2;
-    [SerializeField] float _comboTimer2 = 0;
-
+    [SerializeField] float _attackWait = 0.5f;
     [SerializeField] bool _isGround = true;
     [SerializeField] bool _isAttacking = false;
-    [SerializeField] bool _comboTrigger1 = false;
-    [SerializeField] bool _comboTrigger2 = false;
 
     Rigidbody2D _rb;
 
@@ -31,8 +25,6 @@ public class PlayerController : MonoBehaviour
     public StateMachine PlayerStateMachine => _playerStateMachine;
     public bool IsGruound => _isGround;
     public bool IsAttacking { get => _isAttacking; set => _isAttacking = value; }
-    public bool ComboTrigger1 { get => _comboTrigger1; set => _comboTrigger1 = value; }
-    public bool ComboTrigger2 { get => _comboTrigger2; set => _comboTrigger2 = value; }
 
     void Start()
     {
@@ -69,23 +61,11 @@ public class PlayerController : MonoBehaviour
     void Attack()
     {
         _attackCoolTimer -= Time.deltaTime;
-        _comboTimer1 += Time.deltaTime;
-        _comboTimer2 += Time.deltaTime;
         if (PlayerInput.IsAttack && _attackCoolTimer <= 0)
         {
             _attackCoolTimer = _attackCoolTime;
-            _comboTimer1 = 0;
             _isAttacking = true;
             PlayerAnimController.PlayerAttackAnim(true);
-            if (PlayerInput.IsAttack && _comboTimer1 <= _comboTime1)
-            {
-                _comboTrigger1 = true;
-                _comboTimer2 = 0;
-                if (PlayerInput.IsAttack && _comboTimer2 <= _comboTime2)
-                {
-                    _comboTrigger2 = true;
-                }
-            }
         }
     }
 

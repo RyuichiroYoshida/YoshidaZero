@@ -19,7 +19,7 @@ public class Input : MonoBehaviour
     void Update()
     {
         Pause();
-        if (!_isPause)
+        if (!_isPause || !IsAttack)
         {
             PlayerMove();
             PlayerAction();

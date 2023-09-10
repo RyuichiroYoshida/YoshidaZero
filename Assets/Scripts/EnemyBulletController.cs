@@ -33,6 +33,7 @@ public class EnemyBulletController : MonoBehaviour
         {
             GameManager.instance.KillCount();
             Destroy(collision.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

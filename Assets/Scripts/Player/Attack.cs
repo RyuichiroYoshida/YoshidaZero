@@ -69,11 +69,14 @@ public class Attack : MonoBehaviour
             if (_playerTransform.localScale.x == 1)
             {
                 Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x + 1, _playerTransform.position.y), Quaternion.identity);
+                _rb.Sleep();
+                StartCoroutine(AttackWait());
             }
             else
             {
-
                 Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x - 1, _playerTransform.position.y), Quaternion.Euler(0, 0, 180));
+                _rb.Sleep();
+                StartCoroutine(AttackWait());
             }
         }
         _playerController.IsAttacking = false;
@@ -131,5 +134,11 @@ public class Attack : MonoBehaviour
         this.transform.DOLocalMoveX(_doMoveRange * _playerInput.XInput, _doMoveTime).SetRelative(true).SetEase(Ease.OutCirc);
         yield return new WaitForSeconds(_doMoveTime);
         _isAttacking = false;
+    }
+
+    IEnumerator AttackWait()
+    {
+        yield return new WaitForSeconds(1);
+        _rb.WakeUp();
     }
 }

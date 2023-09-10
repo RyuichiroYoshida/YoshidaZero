@@ -10,14 +10,14 @@ public class ZangekiController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         Transform _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        if (_playerTransform.localScale.x == 1)
-        {
-            _rb.velocity = Vector2.right * _zangekiSpeed;
-        }
-        else
-        {
-            _rb.velocity = Vector2.left * _zangekiSpeed;
-        }
+        //if (_playerTransform.localScale.x == 1)
+        //{
+        //    _rb.velocity = Vector2.right * _zangekiSpeed;
+        //}
+        //else
+        //{
+        //    _rb.velocity = Vector2.left * _zangekiSpeed;
+        //}
         Destroy(gameObject, 0.5f);
     }
 
