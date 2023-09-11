@@ -79,7 +79,6 @@ public class Attack : MonoBehaviour
                 StartCoroutine(AttackWait());
             }
         }
-        _playerController.IsAttacking = false;
     }
 
     /// <summary>
@@ -138,6 +137,7 @@ public class Attack : MonoBehaviour
 
     IEnumerator AttackWait()
     {
+        _playerController.IsAttacking = false;
         yield return new WaitForSeconds(1);
         _rb.WakeUp();
     }

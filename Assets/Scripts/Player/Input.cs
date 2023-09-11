@@ -9,6 +9,8 @@ public class Input : MonoBehaviour
     bool _isDashing = false;
     bool _isPause = false;
 
+    PlayerController _playerController;
+
     public float XInput => _xInput;
     public float YInput => _yInput;
     public bool IsJumping { get => _isJumping; set => _isJumping = value; }
@@ -16,10 +18,15 @@ public class Input : MonoBehaviour
     public bool IsDashing => _isDashing;
     public bool IsPause => _isPause;
 
+    void Start()
+    {
+        _playerController = GetComponent<PlayerController>();
+    }
+
     void Update()
     {
         Pause();
-        if (!_isPause || !IsAttack)
+        if (!_isPause || !_playerController.IsAttacking)
         {
             PlayerMove();
             PlayerAction();
