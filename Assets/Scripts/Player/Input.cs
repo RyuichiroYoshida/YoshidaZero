@@ -6,7 +6,7 @@ public class Input : MonoBehaviour
     float _yInput = 0f;
     bool _isJumping = false;
     bool _isAttack = false;
-    bool _isDashing = false;
+    bool _timeAlter = false;
     bool _isPause = false;
 
     PlayerController _playerController;
@@ -15,7 +15,7 @@ public class Input : MonoBehaviour
     public float YInput => _yInput;
     public bool IsJumping { get => _isJumping; set => _isJumping = value; }
     public bool IsAttack { get => _isAttack; set => _isAttack = value; }
-    public bool IsDashing => _isDashing;
+    public bool TimeAlter => _timeAlter;
     public bool IsPause => _isPause;
 
     void Start()
@@ -26,10 +26,14 @@ public class Input : MonoBehaviour
     void Update()
     {
         Pause();
-        if (!_isPause || !_playerController.IsAttacking)
+        if (!_isPause)
         {
-            PlayerMove();
-            PlayerAction();
+            PlayerTimeAlter();
+            if (!_playerController.IsAttacking)
+            {
+                PlayerMove();
+                PlayerAction();
+            }
         }
     }
 
@@ -45,9 +49,9 @@ public class Input : MonoBehaviour
         IsAttack = UnityEngine.Input.GetButton("Fire1");
     }
 
-    public void PlayerDash()
+    public void PlayerTimeAlter()
     {
-        _isDashing = UnityEngine.Input.GetButton("Fire3");
+        _timeAlter = UnityEngine.Input.GetButton("Fire3");
     }
 
     public void Pause()

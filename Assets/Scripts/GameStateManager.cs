@@ -26,7 +26,7 @@ public class GameStateManager : MonoBehaviour
         _gameState.Initialize(GameState.gameStart); // 最初はGameStartステートから始まるので、初期値を入れる
         _sceneManager = GetComponent<SceneManager>();
         _stageManager = GetComponent<StageManager>();
-        _playerInput = GetComponent<Input>();
+        _playerInput = GameObject.FindGameObjectWithTag("Player").GetComponent<Input>();
 
     }
 

@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpeed: 10
+  _reflection: 0
   _flip: 0
 --- !u!50 &6836352161853124920
 Rigidbody2D:
@@ -127,7 +128,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &4579588382601538461
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -34,13 +34,13 @@ public class Attack : MonoBehaviour
     }
     void Update()
     {
-        // DashAttackのクールタイム計測用
-        _dashAttackTimer -= Time.deltaTime;
+        //// DashAttackのクールタイム計測用
+        //_dashAttackTimer -= Time.deltaTime;
 
-        if (UnityEngine.Input.GetButton("Fire3") && _dashAttackTimer <= 0)
-        {
-            StartCoroutine(DashAttack());
-        }
+        //if (UnityEngine.Input.GetButton("Fire3") && _dashAttackTimer <= 0)
+        //{
+        //    StartCoroutine(DashAttack());
+        //}
 
         float testDistanceX = _target.x - _playerTransform.position.x;
         float testDistanceY = _target.y - _playerTransform.position.y;
