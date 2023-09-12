@@ -1,8 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-using System.Collections;
-using Unity.VisualScripting;
 
 public class TimeAlterGauge : MonoBehaviour
 {
@@ -23,9 +21,9 @@ public class TimeAlterGauge : MonoBehaviour
     {
         if (_gaugeSlider.value <= 0)
             _timeAlterOverHeat = true;
-        else
+        else if (_gaugeSlider.value >= _timeAlterLimit / 2)
             _timeAlterOverHeat = false;
-        if (_timeManager.TimeAltering)
+        if (_timeManager.TimeAltering && !_timeAlterOverHeat)
             GaugeValueDown();
         else
             GaugeValueUp();
@@ -33,21 +31,17 @@ public class TimeAlterGauge : MonoBehaviour
     /// <summary>
     /// 時間操作使用時間ゲージ増加メソッド
     /// </summary>
-    /// <param name="value">ゲージを減少 or 増加させる</param>
-    /// <param name="time">ゲージがマックスになるまでにかかる時間</param>
     void GaugeValueUp()
     {
         DOTween.To(() => _gaugeSlider.value, newValue => _gaugeSlider.value = newValue, _timeAlterLimit, _changeValueInterval)
             .OnComplete(() => _timeAlterOverHeat = false);
     }
+    /// <summary>
+    /// 時間操作使用時間ゲージ減少メソッド
+    /// </summary>
     void GaugeValueDown()
     {
         DOTween.To(() => _gaugeSlider.value, newValue => _gaugeSlider.value = newValue, -_timeAlterLimit, _changeValueInterval)
             .OnComplete(() => _timeAlterOverHeat = true);
-    }
-    IEnumerator ValueChange()
-    {
-
-        yield return new WaitForSeconds(_changeValueInterval);
     }
 }
