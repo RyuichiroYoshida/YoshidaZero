@@ -8,6 +8,10 @@ public class AnimController : MonoBehaviour
     {
         _playerAnimator = GetComponent<Animator>();
     }
+    public void PlayerDeadAnim(bool dead)
+    {
+        _playerAnimator.SetBool("IsDead", dead);
+    }
     public void PlayerMoveAnim(bool walk)
     {
         _playerAnimator.SetBool("IsWalking", walk);
@@ -15,6 +19,10 @@ public class AnimController : MonoBehaviour
     public void PlayerJumpAnim(bool jump)
     {
         _playerAnimator.SetBool("IsJumping", jump);
+    }
+    public void PlayerAirAnim(bool ground)
+    {
+        _playerAnimator.SetBool("IsGround", ground);
     }
     public void PlayerAttackAnim(bool attack)
     {

@@ -19,10 +19,13 @@ public class TimeAlterGauge : MonoBehaviour
     }
     void Update()
     {
+        // ゲージが0以下になるとオーバーヒート状態になる
         if (_gaugeSlider.value <= 0)
             _timeAlterOverHeat = true;
+        // ゲージが半分以上回復するとオーバーヒート状態を解除する
         else if (_gaugeSlider.value >= _timeAlterLimit / 2)
             _timeAlterOverHeat = false;
+        // オーバーヒート状態では時間操作は使えない
         if (_timeManager.TimeAltering && !_timeAlterOverHeat)
             GaugeValueDown();
         else

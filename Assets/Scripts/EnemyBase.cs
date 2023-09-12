@@ -10,7 +10,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     void Update()
     {
-        if (_playerInput.IsPause)
+        if (_playerInput.IsPause && GameManager.instance.IsDead)
             transform.DOPause();
         else
             transform.DOPlay();
@@ -24,7 +24,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(collision.gameObject);
+            GameManager.instance.PlayerDead();
         }
     }
 }

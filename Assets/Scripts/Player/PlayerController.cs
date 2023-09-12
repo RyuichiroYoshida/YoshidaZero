@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     public Attack PlayerAttack => _playerAttack;
     private Input _playerInput;
     public Input PlayerInput => _playerInput;
-    private StateMachine _playerStateMachine;
-    public StateMachine PlayerStateMachine => _playerStateMachine;
     public bool IsGruound => _isGround;
     public bool IsAttacking { get => _isAttacking; set => _isAttacking = value; }
 
@@ -44,11 +42,13 @@ public class PlayerController : MonoBehaviour
     /// <summary>Jump挙動管理メソッド</summary>
     void Jump()
     {
+        _playerAnimController.PlayerJumpAnim(false);
         _jumpCoolTimer -= Time.deltaTime;
         if (_isGround == true && PlayerInput.IsJumping == true && _jumpCoolTimer <= 0) // 接地している、ジャンプ入力がある、クールダウンタイマーが0以下
         {
             _jumpCoolTimer = _jumpCoolTime;
             _rb.velocity = new Vector2(0, _jumpPower);
+            _playerAnimController.PlayerJumpAnim(true);
         }
     }
 
@@ -56,10 +56,15 @@ public class PlayerController : MonoBehaviour
     void Move()
     {
         _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _rb.velocity.y);
+        if (_playerInput.XInput != 0)
+            _playerAnimController.PlayerMoveAnim(true);
+        else
+            _playerAnimController.PlayerMoveAnim(false);
     }
 
     void Attack()
     {
+        PlayerAnimController.PlayerAttackAnim(false);
         _attackCoolTimer -= Time.deltaTime;
         if (PlayerInput.IsAttack && _attackCoolTimer <= 0)
         {
@@ -74,6 +79,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             _isGround = true;
+            _playerAnimController.PlayerAirAnim(true);
         }
     }
 
@@ -82,6 +88,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             _isGround = false;
+            _playerAnimController.PlayerAirAnim(false);
         }
     }
 }

@@ -3,7 +3,6 @@ using UnityEngine;
 public class Input : MonoBehaviour
 {
     float _xInput = 0f;
-    float _yInput = 0f;
     bool _isJumping = false;
     bool _isAttack = false;
     bool _timeAlter = false;
@@ -12,7 +11,6 @@ public class Input : MonoBehaviour
     PlayerController _playerController;
 
     public float XInput => _xInput;
-    public float YInput => _yInput;
     public bool IsJumping { get => _isJumping; set => _isJumping = value; }
     public bool IsAttack { get => _isAttack; set => _isAttack = value; }
     public bool TimeAlter => _timeAlter;
@@ -26,7 +24,7 @@ public class Input : MonoBehaviour
     void Update()
     {
         Pause();
-        if (!_isPause)
+        if (!_isPause && !GameManager.instance.IsDead)
         {
             PlayerTimeAlter();
             if (!_playerController.IsAttacking)
@@ -40,7 +38,6 @@ public class Input : MonoBehaviour
     public void PlayerMove()
     {
         _xInput = UnityEngine.Input.GetAxisRaw("Horizontal");
-        _yInput = UnityEngine.Input.GetAxisRaw("Vertical");
         IsJumping = UnityEngine.Input.GetButton("Jump");
     }
 
