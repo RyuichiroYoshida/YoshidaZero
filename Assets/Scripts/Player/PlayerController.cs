@@ -55,11 +55,16 @@ public class PlayerController : MonoBehaviour
     /// <summary>…•½ˆÚ“®ŠÇ—ƒƒ\ƒbƒh</summary>
     void Move()
     {
+        if (_playerAttack.AttackEnd)
+        {
         _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _rb.velocity.y);
         if (_playerInput.XInput != 0)
             _playerAnimController.PlayerMoveAnim(true);
         else
             _playerAnimController.PlayerMoveAnim(false);
+        }
+        else
+            _rb.Sleep();
     }
 
     void Attack()

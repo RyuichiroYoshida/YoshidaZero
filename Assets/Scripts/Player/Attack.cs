@@ -15,14 +15,14 @@ public class Attack : MonoBehaviour
     [SerializeField] bool _isAttacking = false;
     [SerializeField] float _doMoveRange = 5;
     [SerializeField] float _doMoveTime = 3;
-    bool _attackEnd = false;
+    bool _attackEnd = true;
     Rigidbody2D _rb;
     Transform _playerTransform;
     Vector2 _mousePosition;
     Vector2 _target;
     PlayerController _playerController;
     Input _playerInput;
-    public bool AttackEnd { get => _attackEnd; set => _attackEnd = value; }
+    public bool AttackEnd => _attackEnd;
     public Vector2 MousePosition => _mousePosition;
 
     void Start()
@@ -34,27 +34,13 @@ public class Attack : MonoBehaviour
     }
     void Update()
     {
-        //// DashAttackのクールタイム計測用
-        //_dashAttackTimer -= Time.deltaTime;
-
-        //if (UnityEngine.Input.GetButton("Fire3") && _dashAttackTimer <= 0)
-        //{
-        //    StartCoroutine(DashAttack());
-        //}
-
         float testDistanceX = _target.x - _playerTransform.position.x;
         float testDistanceY = _target.y - _playerTransform.position.y;
         Vector2 testDistance = new Vector2(testDistanceX, testDistanceY);
 
         PlayerMousePosition();
         if (UnityEngine.Input.GetButton("Fire2"))
-        {
             DebugMove();
-        }
-        else
-        {
-            _isAttacking = false;
-        }
 
         PlayerZangeki();
     }
@@ -64,20 +50,14 @@ public class Attack : MonoBehaviour
     /// </summary>
     public void PlayerZangeki()
     {
-        if (_playerController.IsAttacking)
+        if (_playerController.IsAttacking && _attackEnd)
         {
+            _attackEnd = false;
+            _playerController.IsAttacking = false;
             if (_playerTransform.localScale.x == 1)
-            {
                 Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x + 1, _playerTransform.position.y), Quaternion.identity);
-                _rb.Sleep();
-                StartCoroutine(AttackWait());
-            }
             else
-            {
                 Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x - 1, _playerTransform.position.y), Quaternion.Euler(0, 0, 180));
-                _rb.Sleep();
-                StartCoroutine(AttackWait());
-            }
         }
     }
 
@@ -107,38 +87,13 @@ public class Attack : MonoBehaviour
 
     public void AttackAnimEnd()
     {
-        AttackEnd = true;
+        _attackEnd = true;
+        _rb.WakeUp();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-        {
             Destroy(collision.gameObject);
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (_isAttacking)
-        {
-            _isHitting = true;
-        }
-    }
-
-    IEnumerator DashAttack()
-    {
-        _dashAttackTimer = _dashAttackCoolTime;
-        _isAttacking = true;
-        this.transform.DOLocalMoveX(_doMoveRange * _playerInput.XInput, _doMoveTime).SetRelative(true).SetEase(Ease.OutCirc);
-        yield return new WaitForSeconds(_doMoveTime);
-        _isAttacking = false;
-    }
-
-    IEnumerator AttackWait()
-    {
-        _playerController.IsAttacking = false;
-        yield return new WaitForSeconds(1);
-        _rb.WakeUp();
     }
 }

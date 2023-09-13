@@ -2903,7 +2903,7 @@ MonoBehaviour:
   _jumpPower: 10
   _jumpCoolTime: 2
   _jumpCoolTimer: 0
-  _attackCoolTime: 1
+  _attackCoolTime: 2
   _attackCoolTimer: 0
   _attackWait: 0.5
   _isGround: 1
