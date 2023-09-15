@@ -255,7 +255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85308127}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.36, y: -2.96, z: -10.037028}
+  m_LocalPosition: {x: -6.36, y: -3.2, z: -10.037028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2408,6 +2408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 604266582}
   - component: {fileID: 604266581}
+  - component: {fileID: 604266583}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -2462,7 +2463,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604266580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.36, y: -2.96, z: -10.037028}
+  m_LocalPosition: {x: -6.36, y: -3.2, z: -10.037028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2470,6 +2471,19 @@ Transform:
   m_Father: {fileID: 357617320}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &604266583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604266580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88bc6bba942b924dae077766446398d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _size: 5
 --- !u!1 &668127248
 GameObject:
   m_ObjectHideFlags: 0
@@ -4585,7 +4599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523109662}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.36, y: -2.96, z: -0.03702841}
+  m_LocalPosition: {x: -6.36, y: -3.2, z: -0.03702841}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4664,12 +4678,9 @@ MonoBehaviour:
   _zangekiPrefab: {fileID: 2275173156764782130, guid: e5d66ba2d1e051447970d1e762d72871, type: 3}
   _attackDamage: 10
   _debugMoveSpeed: 100
-  _dashAttackTimer: 0
-  _dashAttackCoolTime: 5
   _isHitting: 0
   _isAttacking: 0
-  _doMoveRange: 7
-  _doMoveTime: 0.5
+  _attackEnd: 1
 --- !u!114 &1523109670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4690,7 +4701,7 @@ MonoBehaviour:
   _attackCoolTimer: 0
   _attackWait: 0.5
   _isGround: 1
-  _isAttacking: 0
+  _isAttackReady: 0
 --- !u!50 &1523109671
 Rigidbody2D:
   serializedVersion: 4

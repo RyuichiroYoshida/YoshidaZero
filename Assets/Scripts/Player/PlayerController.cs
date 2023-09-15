@@ -11,18 +11,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _attackCoolTimer = 0;
     [SerializeField] float _attackWait = 0.5f;
     [SerializeField] bool _isGround = true;
-    [SerializeField] bool _isAttacking = false;
-
+    [SerializeField] bool _isAttackReady = false;
     Rigidbody2D _rb;
-
-    private AnimController _playerAnimController;
+    AnimController _playerAnimController;
     public AnimController PlayerAnimController => _playerAnimController;
-    private Attack _playerAttack;
-    public Attack PlayerAttack => _playerAttack;
-    private Input _playerInput;
+    Attack _playerAttack;
+    Input _playerInput;
     public Input PlayerInput => _playerInput;
     public bool IsGruound => _isGround;
-    public bool IsAttacking { get => _isAttacking; set => _isAttacking = value; }
+    public bool IsAttackReady { get => _isAttackReady; set => _isAttackReady = value; }
 
     void Start()
     {
@@ -55,9 +52,12 @@ public class PlayerController : MonoBehaviour
     /// <summary>水平移動管理メソッド</summary>
     void Move()
     {
+        // プレイヤーの攻撃アニメーションが終了しているとき移動処理を行う
+        // プレイヤーの攻撃アニメーションが実行中は物理挙動を止める
         if (_playerAttack.AttackEnd)
         {
         _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _rb.velocity.y);
+        // プレイヤーのX軸入力を受け取ったときアニメーターのboolを切り替える
         if (_playerInput.XInput != 0)
             _playerAnimController.PlayerMoveAnim(true);
         else
@@ -66,15 +66,17 @@ public class PlayerController : MonoBehaviour
         else
             _rb.Sleep();
     }
-
+    /// <summary>
+    /// プレイヤー攻撃処理制御メソッド
+    /// </summary>
     void Attack()
     {
-        PlayerAnimController.PlayerAttackAnim(false);
         _attackCoolTimer -= Time.deltaTime;
-        if (PlayerInput.IsAttack && _attackCoolTimer <= 0)
+        // プレイヤーが攻撃ボタンを押しているかつ、クールタイムが0かつ、攻撃アニメーションが終了している時に攻撃処理を行う
+        if (PlayerInput.IsAttack && _attackCoolTimer <= 0 && _playerAttack.AttackEnd)
         {
             _attackCoolTimer = _attackCoolTime;
-            _isAttacking = true;
+            _isAttackReady = true;
             PlayerAnimController.PlayerAttackAnim(true);
         }
     }

@@ -7,21 +7,15 @@ public class Attack : MonoBehaviour
     [SerializeField] GameObject _zangekiPrefab;
     [SerializeField] float _attackDamage = 10;
     [SerializeField] float _debugMoveSpeed = 100;
-
-    [SerializeField] float _dashAttackTimer = 0;
-    [SerializeField] float _dashAttackCoolTime = 5;
-
     [SerializeField] bool _isHitting = false;
     [SerializeField] bool _isAttacking = false;
-    [SerializeField] float _doMoveRange = 5;
-    [SerializeField] float _doMoveTime = 3;
-    bool _attackEnd = true;
+    [SerializeField] bool _attackEnd = true;
     Rigidbody2D _rb;
     Transform _playerTransform;
     Vector2 _mousePosition;
     Vector2 _target;
     PlayerController _playerController;
-    Input _playerInput;
+    AnimController _animController;
     public bool AttackEnd => _attackEnd;
     public Vector2 MousePosition => _mousePosition;
 
@@ -30,17 +24,13 @@ public class Attack : MonoBehaviour
         _playerTransform = GetComponent<Transform>();
         _rb = GetComponent<Rigidbody2D>();
         _playerController = GetComponent<PlayerController>();
-        _playerInput = GetComponent<Input>();
+        _animController = GetComponent<AnimController>();
     }
     void Update()
     {
-        float testDistanceX = _target.x - _playerTransform.position.x;
-        float testDistanceY = _target.y - _playerTransform.position.y;
-        Vector2 testDistance = new Vector2(testDistanceX, testDistanceY);
+        PlayerZangeki();
         if (UnityEngine.Input.GetButton("Fire2"))
             DebugMove();
-
-        PlayerZangeki();
     }
 
     /// <summary>
@@ -48,10 +38,10 @@ public class Attack : MonoBehaviour
     /// </summary>
     public void PlayerZangeki()
     {
-        if (_playerController.IsAttacking && _attackEnd)
+        if (_playerController.IsAttackReady && _attackEnd)
         {
             _attackEnd = false;
-            _playerController.IsAttacking = false;
+            _playerController.IsAttackReady = false;
             if (_playerTransform.localScale.x == 1)
                 Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x + 1, _playerTransform.position.y), Quaternion.identity);
             else
@@ -81,6 +71,7 @@ public class Attack : MonoBehaviour
     /// </summary>
     public void AttackAnimEnd()
     {
+        _animController.PlayerAttackAnim(false);
         _attackEnd = true;
         _rb.WakeUp();
     }

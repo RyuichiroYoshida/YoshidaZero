@@ -27,7 +27,7 @@ public class Input : MonoBehaviour
         if (!_isPause && !GameManager.instance.IsDead)
         {
             PlayerTimeAlter();
-            if (!_playerController.IsAttacking)
+            if (!_playerController.IsAttackReady)
             {
                 PlayerMove();
                 PlayerAction();
