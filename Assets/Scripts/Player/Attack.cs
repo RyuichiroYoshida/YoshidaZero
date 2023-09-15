@@ -37,8 +37,6 @@ public class Attack : MonoBehaviour
         float testDistanceX = _target.x - _playerTransform.position.x;
         float testDistanceY = _target.y - _playerTransform.position.y;
         Vector2 testDistance = new Vector2(testDistanceX, testDistanceY);
-
-        PlayerMousePosition();
         if (UnityEngine.Input.GetButton("Fire2"))
             DebugMove();
 
@@ -78,13 +76,9 @@ public class Attack : MonoBehaviour
             _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, _target, _debugMoveSpeed * Time.deltaTime);
         }
     }
-
-    public void PlayerMousePosition()
-    {
-        _mousePosition = UnityEngine.Input.mousePosition;
-        _target = Camera.main.ScreenToWorldPoint(_mousePosition);
-    }
-
+    /// <summary>
+    /// アニメーションイベントで攻撃アニメーションの終了通知用メソッド
+    /// </summary>
     public void AttackAnimEnd()
     {
         _attackEnd = true;
