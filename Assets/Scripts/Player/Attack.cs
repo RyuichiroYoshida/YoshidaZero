@@ -10,6 +10,7 @@ public class Attack : MonoBehaviour
     [SerializeField] bool _isHitting = false;
     [SerializeField] bool _isAttacking = false;
     [SerializeField] bool _attackEnd = true;
+    GameObject _zangekiObj;
     Rigidbody2D _rb;
     Transform _playerTransform;
     Vector2 _mousePosition;
@@ -40,12 +41,19 @@ public class Attack : MonoBehaviour
     {
         if (_playerController.IsAttackReady && _attackEnd)
         {
+            _animController.PlayerAttackAnim(false);
             _attackEnd = false;
             _playerController.IsAttackReady = false;
             if (_playerTransform.localScale.x == 1)
-                Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x + 1, _playerTransform.position.y), Quaternion.identity);
+            {
+                _zangekiObj = Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x + 1, _playerTransform.position.y), Quaternion.identity);
+                _zangekiObj.transform.parent = _playerTransform;
+            }
             else
-                Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x - 1, _playerTransform.position.y), Quaternion.Euler(0, 0, 180));
+            {
+                _zangekiObj = Instantiate(_zangekiPrefab, new Vector2(_playerTransform.position.x - 1, _playerTransform.position.y), Quaternion.Euler(0, 0, 180));
+                _zangekiObj.transform.parent = _playerTransform;
+            }
         }
     }
 
@@ -71,7 +79,6 @@ public class Attack : MonoBehaviour
     /// </summary>
     public void AttackAnimEnd()
     {
-        _animController.PlayerAttackAnim(false);
         _attackEnd = true;
         _rb.WakeUp();
     }

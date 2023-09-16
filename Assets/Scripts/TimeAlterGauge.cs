@@ -28,7 +28,7 @@ public class TimeAlterGauge : MonoBehaviour
         // オーバーヒート状態では時間操作は使えない
         if (_timeManager.TimeAltering && !_timeAlterOverHeat)
             GaugeValueDown();
-        else
+        else if (_gaugeSlider.value != _timeAlterLimit)
             GaugeValueUp();
     }
     /// <summary>
