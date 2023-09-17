@@ -9,7 +9,10 @@ public class TimeAlterGauge : MonoBehaviour
     [SerializeField] bool _timeAlterOverHeat = false;
     Slider _gaugeSlider;
     TimeManager _timeManager;
+    public float TimeAlterLimit => _timeAlterLimit;
     public bool TimeAlterOverHeat => _timeAlterOverHeat;
+
+
     void Start()
     {
         _gaugeSlider = GameObject.FindGameObjectWithTag("UI").GetComponent<Slider>();
