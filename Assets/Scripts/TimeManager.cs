@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,22 +19,13 @@ public class TimeManager : MonoBehaviour
         {
             _timeAltering = true;
             Time.timeScale = 0.2f;
-            TimeAlterFade();
+            _timeFadeImage.gameObject.SetActive(true);
         }
         else
         {
             _timeAltering = false;
             Time.timeScale = 1;
-        }
-    }
-    void TimeAlterFade()
-    {
-        _timeFadeImage.gameObject.SetActive(true);
-        _timeFadeImage.DOFade(1, _timeAlterGauge.TimeAlterLimit);
-        if (!_timeAltering)
-        {
-            _timeFadeImage.DOKill();
-            _timeFadeImage.DOFade(0, 2);
+            _timeFadeImage.gameObject.SetActive(false);
         }
     }
 }
