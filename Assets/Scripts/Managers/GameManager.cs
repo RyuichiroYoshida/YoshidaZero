@@ -28,14 +28,14 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
-        _playerAnim = _player.GetComponent<AnimController>();
+        _playerAnim = _player?.GetComponent<AnimController>();
     }
 
     void Update()
     {
         _timer += Time.unscaledDeltaTime;
-        _timerText.text ??= _timer.ToString();
-
+        if (_timerText != null)
+            _timerText.text = _timer.ToString();
     }
     public void PlayerDead()
     {
