@@ -163,13 +163,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 377466128}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39a0ba79cfcaaba428b4bd35fd0bbd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _killCounter: 0
-  _timer: 0
+  _killCounter: 100000
+  _timer: 100000
   _isDead: 0
   _timerText: {fileID: 0}
 --- !u!114 &377466131
@@ -184,8 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6fcdafa3a1849c4e875de0e4f54409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _killCounter: 0
-  _timer: 0
+  _killCounter: 10000
+  _timer: 10000
+  _endTime: 5
   _killCounterText: {fileID: 595534720}
   _timerText: {fileID: 1883996904}
 --- !u!1 &595534718
