@@ -53,8 +53,7 @@ public class Input : MonoBehaviour
 
     public void Pause()
     {
-        //print(IsPause);
-        if (UnityEngine.Input.GetButton("Pause"))
+        if (UnityEngine.Input.GetButtonUp("Pause"))
         {
             _isPause = !_isPause;
         }

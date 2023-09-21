@@ -4,7 +4,6 @@ public class EnemyController : EnemyBase
 {
     void Start()
     {
-        //transform.DOLocalMoveX(5, 5)
-        // .SetLoops(-1, LoopType.Yoyo);
+        transform.DOMoveX(-5, 5).SetLoops(-1, LoopType.Yoyo).SetLink(this.gameObject);
     }
 }

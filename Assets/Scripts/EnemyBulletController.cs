@@ -8,6 +8,8 @@ public class EnemyBulletController : MonoBehaviour
     [SerializeField, Tooltip("デバッグ用")] float _flip = 0;
     GunEnemyController _enemyController;
     Rigidbody2D _rb;
+    Input _playerInput;
+    GameObject _player;
     public float FlipX { get => _flip; set => _flip = value; }
     public bool Reflection { get => _reflection; set => _reflection = value; }
     void Start()
@@ -16,11 +18,17 @@ public class EnemyBulletController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _enemyController = GameObject.Find("GunEnemy").GetComponent<GunEnemyController>();
         _flip = _enemyController.FlipValue;
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _playerInput = _player.GetComponent<Input>();
     }
 
     void Update()
     {
         _rb.velocity = Vector2.right * _bulletSpeed * _flip;
+        if (_playerInput.IsPause)
+            _rb.Sleep();
+        else
+            _rb.WakeUp();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

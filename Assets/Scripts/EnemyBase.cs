@@ -10,15 +10,10 @@ public abstract class EnemyBase : MonoBehaviour
     }
     void Update()
     {
-        if (_playerInput.IsPause && GameManager.instance.IsDead)
+        if (_playerInput.IsPause && !GameManager.instance.IsDead)
             transform.DOPause();
         else
             transform.DOPlay();
-    }
-
-    void OnDestroy()
-    {
-        DOTween.KillAll();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

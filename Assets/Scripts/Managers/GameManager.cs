@@ -9,13 +9,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text _timerText;
     GameObject _player;
     AnimController _playerAnim;
+    Input _playerinput;
     public float KillCounter => _killCounter;
     public float Timer => _timer;
     public bool IsDead => _isDead;
     public static GameManager instance;
     private void Awake()
     {
-
         if (instance == null)
         {
             instance = this;
@@ -29,10 +29,13 @@ public class GameManager : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerAnim = _player.GetComponent<AnimController>();
+        _playerinput = _player.GetComponent<Input>();
     }
 
     void Update()
     {
+        if (_playerinput.IsPause)
+            return;
         _timer += Time.unscaledDeltaTime;
         if (_timerText != null)
             _timerText.text = _timer.ToString("000");
