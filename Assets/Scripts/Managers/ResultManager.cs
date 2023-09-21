@@ -27,7 +27,7 @@ public class ResultManager : MonoBehaviour
     }
     void DoKillCounter()
     {
-        string str = "Kill:";
+        string str = "ƒLƒ‹";
         DOTween.To(() => _killCount, newValue =>
         {
             _killCount = newValue;
@@ -36,7 +36,7 @@ public class ResultManager : MonoBehaviour
     }
     void DoTimer()
     {
-        string str = "Time:";
+        string str = "ƒ^ƒCƒ€";
         DOTween.To(() => _timeCount, newValue =>
         {
             _timeCount = newValue;
