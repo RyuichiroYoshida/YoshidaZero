@@ -7,12 +7,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _timer = 0;
     [SerializeField] bool _isDead = false;
     [SerializeField] Text _timerText;
+    [SerializeField] bool _stageTextEnd = false;
     GameObject _player;
     AnimController _playerAnim;
     Input _playerinput;
     public float KillCounter => _killCounter;
     public float Timer => _timer;
     public bool IsDead => _isDead;
+    public bool StageTextEnd { get => _stageTextEnd; set => _stageTextEnd = value; }
     public static GameManager instance;
     private void Awake()
     {
