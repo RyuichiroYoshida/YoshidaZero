@@ -13,6 +13,6 @@ public class SceneManager : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         _fade .gameObject.SetActive(true);
-        _fade.DOFade(1, 5f).OnComplete(() => UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName));
+        _fade.DOFade(1, 3f).OnComplete(() => UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName));
     }
 }

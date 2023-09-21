@@ -5361,6 +5361,7 @@ GameObject:
   - component: {fileID: 900843509}
   - component: {fileID: 900843508}
   - component: {fileID: 900843507}
+  - component: {fileID: 900843510}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -5433,9 +5434,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 26a93f59e6e418847a3340273a5c465d, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
+      - m_Target: {fileID: 900843510}
+        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
+        m_MethodName: SceneChange
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5483,6 +5484,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900843505}
   m_CullTransparentMesh: 1
+--- !u!114 &900843510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900843505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a93f59e6e418847a3340273a5c465d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fade: {fileID: 2136938426}
 --- !u!1 &1024336451
 GameObject:
   m_ObjectHideFlags: 0
@@ -5656,7 +5670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1050646819
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6820,6 +6834,7 @@ GameObject:
   - component: {fileID: 1994471333}
   - component: {fileID: 1994471332}
   - component: {fileID: 1994471331}
+  - component: {fileID: 1994471334}
   m_Layer: 5
   m_Name: TitleButton
   m_TagString: Untagged
@@ -6892,9 +6907,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 26a93f59e6e418847a3340273a5c465d, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
+      - m_Target: {fileID: 1994471334}
+        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
+        m_MethodName: SceneChange
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6942,6 +6957,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994471329}
   m_CullTransparentMesh: 1
+--- !u!114 &1994471334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994471329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26a93f59e6e418847a3340273a5c465d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fade: {fileID: 2136938426}
 --- !u!1 &2043829534
 GameObject:
   m_ObjectHideFlags: 0
