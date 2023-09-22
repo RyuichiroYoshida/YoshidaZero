@@ -24,7 +24,8 @@ public class Input : MonoBehaviour
     void Update()
     {
         Pause();
-        if (!_isPause && !GameManager.instance.IsDead)
+        // 入力を受けつけるのは、(ポーズ中ではない　死んでいない　最初の準備が終わっている)時
+        if (!_isPause && !GameManager.instance.IsDead && GameManager.instance.StageTextEnd)
         {
             PlayerTimeAlter();
             if (!_playerController.IsAttackReady)

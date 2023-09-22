@@ -24,6 +24,14 @@ public class GunEnemyController : EnemyBase
 
     void Update()
     {
+        if (_playerInput.IsPause || GameManager.instance.IsDead || !GameManager.instance.StageTextEnd)
+        {
+            _rb.Sleep();
+            return;
+        }
+        else
+            _rb.WakeUp();
+
         _timer += Time.deltaTime;
         if (_wallHit)
         {

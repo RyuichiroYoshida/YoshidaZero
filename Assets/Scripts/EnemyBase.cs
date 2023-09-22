@@ -3,14 +3,15 @@ using DG.Tweening;
 
 public abstract class EnemyBase : MonoBehaviour
 {
-    Input _playerInput;
+    protected Input _playerInput;
     void Awake()
     {
         _playerInput = GameObject.FindWithTag("Player").GetComponent<Input>();
     }
     void Update()
     {
-        if (_playerInput.IsPause && !GameManager.instance.IsDead)
+        // エネミーが止まるのは、(ポーズ中　プレイヤーが死んでいる　最初の準備が終わっていない)時
+        if (_playerInput.IsPause || GameManager.instance.IsDead || !GameManager.instance.StageTextEnd)
             transform.DOPause();
         else
             transform.DOPlay();

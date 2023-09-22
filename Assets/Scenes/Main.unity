@@ -171,6 +171,7 @@ MonoBehaviour:
   _timer: 0
   _isDead: 0
   _timerText: {fileID: 1045176511}
+  _stageTextEnd: 0
 --- !u!1 &85308127
 GameObject:
   m_ObjectHideFlags: 0
@@ -5353,11 +5354,11 @@ RectTransform:
   - {fileID: 685374722}
   - {fileID: 170325642}
   - {fileID: 1050646819}
-  - {fileID: 2136938425}
   - {fileID: 228333917}
   - {fileID: 481110036}
   - {fileID: 238978810}
   - {fileID: 1045176510}
+  - {fileID: 2136938425}
   m_Father: {fileID: 520555547}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
