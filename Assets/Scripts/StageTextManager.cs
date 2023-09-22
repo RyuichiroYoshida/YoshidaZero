@@ -14,7 +14,7 @@ public class StageTextManager : MonoBehaviour
 
     IEnumerator StartText()
     {
-        transform.DOMoveX(-1500, 1).SetRelative(true);
+        transform.DOMoveX(-2000, 1).SetRelative(true);
         yield return new WaitForSeconds(2);
         _text.DOFade(0, 1).OnComplete(() => Destroy(this)).SetLink(this.gameObject);
     }

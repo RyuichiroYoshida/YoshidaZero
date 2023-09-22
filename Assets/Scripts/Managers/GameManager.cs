@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (_playerinput.IsPause || IsDead)
+        if (_playerinput.IsPause || IsDead || !StageTextEnd)
             return;
         _timer += Time.unscaledDeltaTime;
         if (_timerText != null)
