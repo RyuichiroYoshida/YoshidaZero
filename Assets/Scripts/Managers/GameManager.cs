@@ -6,8 +6,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _killCounter = 0;
     [SerializeField] float _timer = 0;
     [SerializeField] bool _isDead = false;
-    [SerializeField] Text _timerText;
     [SerializeField] bool _stageTextEnd = false;
+    [SerializeField] Text _timerText;
+    [SerializeField] GameObject _restartButton;
     GameObject _player;
     AnimController _playerAnim;
     Input _playerinput;
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
     {
         _isDead = true;
         _playerAnim.PlayerDeadAnim(true);
+        _restartButton.SetActive(true);
+
     }
     public void KillCount()
     {
