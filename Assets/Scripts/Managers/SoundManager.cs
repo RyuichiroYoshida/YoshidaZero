@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioClip _damageVoice;
+    [SerializeField] AudioClip _startVoice;
     [SerializeField] AudioSource _bgm;
     AudioSource _audioSource;
     bool _isPlaying = false;
@@ -21,6 +23,7 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         _audioSource = GetComponent<AudioSource>();
+        StartCoroutine(VoiceStart());
     }
     void Update()
     {
@@ -30,5 +33,10 @@ public class SoundManager : MonoBehaviour
             _isPlaying = true;
             _bgm.Stop();
         }
+    }
+    IEnumerator VoiceStart()
+    {
+        yield return new WaitForSeconds(1.5f);
+        _audioSource.PlayOneShot(_startVoice);
     }
 }

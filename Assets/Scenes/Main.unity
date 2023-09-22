@@ -8098,6 +8098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damageVoice: {fileID: 8300000, guid: 4dbb98fcbc50a7945886042aebfaa41c, type: 3}
+  _startVoice: {fileID: 8300000, guid: fac5cb157891e7e409ed99650d534298, type: 3}
   _bgm: {fileID: 523048778}
 --- !u!4 &6581308893757985472
 Transform:
