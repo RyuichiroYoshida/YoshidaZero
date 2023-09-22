@@ -1,18 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] AudioClip _jumpVoice;
+    [SerializeField] AudioClip _attackVoice;
+    [SerializeField] AudioClip _deadVoice;
+    public static SoundManager instance;
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
