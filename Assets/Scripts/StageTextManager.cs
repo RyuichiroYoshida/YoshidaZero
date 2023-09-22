@@ -16,6 +16,6 @@ public class StageTextManager : MonoBehaviour
     {
         transform.DOMoveX(-1500, 1).SetRelative(true);
         yield return new WaitForSeconds(2);
-        _text.DOFade(0, 1).OnComplete(() => Destroy(this));
+        _text.DOFade(0, 1).OnComplete(() => Destroy(this)).SetLink(this.gameObject);
     }
 }

@@ -16,6 +16,6 @@ public class StartTextImage : MonoBehaviour
     {
         transform.DOMoveX(-2000, 1).SetRelative(true);
         yield return new WaitForSeconds(2);
-        _image.DOFade(0, 1).OnComplete(() => Destroy(this)).OnComplete(() => GameManager.instance.StageTextEnd = true);
+        _image.DOFade(0, 1).OnComplete(() => Destroy(this)).OnComplete(() => GameManager.instance.StageTextEnd = true).SetLink(this.gameObject);
     }
 }
