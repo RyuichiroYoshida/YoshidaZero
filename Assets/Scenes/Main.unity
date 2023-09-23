@@ -252,7 +252,7 @@ MonoBehaviour:
   _isDead: 0
   _stageTextEnd: 0
   _timerText: {fileID: 1045176511}
-  _restartButton: {fileID: 0}
+  _restartButton: {fileID: 1168572211}
 --- !u!1 &85308127
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +752,7 @@ Transform:
   m_Children:
   - {fileID: 1544267351}
   - {fileID: 1651680733}
+  - {fileID: 517685316}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1024,6 +1025,83 @@ Transform:
   m_Father: {fileID: 1579851962}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &517685315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517685316}
+  - component: {fileID: 517685317}
+  m_Layer: 0
+  m_Name: StartWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517685316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517685315}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.5, y: -2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 233087474}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &517685317
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517685315}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.01809293}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 3.1349664}
+  m_EdgeRadius: 0
 --- !u!1 &520555546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,7 +1335,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -4690,36 +4768,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 6, y: -4, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 7, y: -4, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 5
-      m_TileSpriteIndex: 5
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 7, y: -3, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 6
-      m_TileSpriteIndex: 6
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: -8, y: -1, z: 0}
     second:
       serializedVersion: 2
@@ -4984,7 +5032,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5002,10 +5050,10 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: e164498e68ae9644ca22b83e0aab94ad, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 6f2058783a527774589a9db660366f68, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: e5799b2545b541445abbf3bbb94b00fb, type: 2}
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: afc65e69d648fd14c8951d8d1bcd617f, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -5015,14 +5063,14 @@ Tilemap:
     m_Data: {fileID: 417520475, guid: 5584ae9caa7c6214fa8d34ce1f18b485, type: 3}
   - m_RefCount: 37
     m_Data: {fileID: -932955517, guid: 5584ae9caa7c6214fa8d34ce1f18b485, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -135962589, guid: 5584ae9caa7c6214fa8d34ce1f18b485, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1973133326, guid: 5584ae9caa7c6214fa8d34ce1f18b485, type: 3}
-  - m_RefCount: 2
-    m_Data: {fileID: 1256273720, guid: 5584ae9caa7c6214fa8d34ce1f18b485, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 47
+  - m_RefCount: 44
     m_Data:
       e00: 1
       e01: 0
@@ -5041,7 +5089,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 47
+  - m_RefCount: 44
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -5123,14 +5171,6 @@ CompositeCollider2D:
       - X: 50000000
         Y: -10000000
     - - X: 80000000
-        Y: -20000000
-      - X: 70000000
-        Y: -20000000
-      - X: 70000000
-        Y: -30000000
-      - X: 60000000
-        Y: -30000000
-      - X: 60000000
         Y: -40000000
       - X: -90000000
         Y: -40000000
@@ -5149,11 +5189,7 @@ CompositeCollider2D:
       - {x: -8, y: -0.000029300001}
       - {x: -7.9999704, y: -1}
     - - {x: 7.9999704, y: -5}
-      - {x: 7.9999704, y: -2}
-      - {x: 7, y: -2.0000293}
-      - {x: 6.9999704, y: -3}
-      - {x: 6, y: -3.0000293}
-      - {x: 5.9999704, y: -4}
+      - {x: 7.9999704, y: -4}
       - {x: -9, y: -4.000029}
       - {x: -8.99997, y: -5}
   m_VertexDistance: 0.0005
@@ -5841,6 +5877,18 @@ MonoBehaviour:
           m_StringArgument: Main
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5022903489275332963}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PanelButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &900843508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6059,6 +6107,7 @@ GameObject:
   - component: {fileID: 1050646819}
   - component: {fileID: 1050646821}
   - component: {fileID: 1050646820}
+  - component: {fileID: 1050646822}
   m_Layer: 5
   m_Name: PausePanel
   m_TagString: Untagged
@@ -6127,6 +6176,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050646818}
   m_CullTransparentMesh: 1
+--- !u!114 &1050646822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050646818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d19fd50a46ffd4395ee582c704890d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _panelSound: {fileID: 8300000, guid: 3791b393f9b5365409a89582a5958548, type: 3}
 --- !u!1 &1146360349
 GameObject:
   m_ObjectHideFlags: 0
@@ -6404,6 +6466,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Main
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5022903489275332963}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: ReatartSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1168572214
@@ -7464,6 +7538,18 @@ MonoBehaviour:
           m_StringArgument: Title
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 5022903489275332963}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: PanelButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1994471332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7683,7 +7769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
-  _jumpPower: 5
+  _jumpPower: 9
   _jumpCoolTime: 2
   _jumpCoolTimer: 0
   _attackCoolTime: 0.5
@@ -8099,6 +8185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageVoice: {fileID: 8300000, guid: 4dbb98fcbc50a7945886042aebfaa41c, type: 3}
   _startVoice: {fileID: 8300000, guid: fac5cb157891e7e409ed99650d534298, type: 3}
+  _restartSound: {fileID: 8300000, guid: 50e415bac186b4044807e4624339d2ff, type: 3}
+  _pauseButtonSound: {fileID: 8300000, guid: 50e415bac186b4044807e4624339d2ff, type: 3}
   _bgm: {fileID: 523048778}
 --- !u!4 &6581308893757985472
 Transform:
@@ -8127,7 +8215,7 @@ GameObject:
   - component: {fileID: 4153510100969942025}
   - component: {fileID: 5022903489275332963}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: SoundManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

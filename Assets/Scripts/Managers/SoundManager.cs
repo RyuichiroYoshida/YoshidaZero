@@ -5,6 +5,8 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] AudioClip _damageVoice;
     [SerializeField] AudioClip _startVoice;
+    [SerializeField] AudioClip _restartSound;
+    [SerializeField] AudioClip _pauseButtonSound;
     [SerializeField] AudioSource _bgm;
     AudioSource _audioSource;
     bool _isPlaying = false;
@@ -38,5 +40,14 @@ public class SoundManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         _audioSource.PlayOneShot(_startVoice);
+    }
+    public void ReatartSound()
+    {
+        _audioSource.PlayOneShot(_restartSound);
+    }
+    public void PanelButtonSound()
+    {
+        _bgm.Stop();
+        _audioSource.PlayOneShot(_pauseButtonSound);
     }
 }

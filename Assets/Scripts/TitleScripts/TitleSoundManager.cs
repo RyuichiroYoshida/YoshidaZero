@@ -8,10 +8,6 @@ public class TitleSoundManager : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
     }
-    void Update()
-    {
-
-    }
     public void ButtonSound()
     {
         _audioSource.PlayOneShot(_buttonSound);
