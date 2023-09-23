@@ -13,6 +13,7 @@ public class GunEnemyController : EnemyBase
     [SerializeField, Tooltip("デバッグ用")] RaycastHit2D _wallHit;
     [SerializeField, Tooltip("デバッグ用")] RaycastHit2D _playerHit;
     Rigidbody2D _rb;
+    SpriteRenderer _spriteRenderer;
     float _timer = 0;
 
     public float FlipValue => _flipValue;
@@ -20,6 +21,7 @@ public class GunEnemyController : EnemyBase
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -37,6 +39,7 @@ public class GunEnemyController : EnemyBase
         {
             print("Wall Hit");
             _flipValue *= -1;
+            _spriteRenderer.flipX = !_spriteRenderer.flipX;
         }
         EnemyMove(_flipValue);
         EnemyAttack(_flipValue);
@@ -49,7 +52,7 @@ public class GunEnemyController : EnemyBase
     void EnemyMove(float value)
     {
         // 壁検知用ラインキャスト
-        Vector2 _wallLineEnd = new Vector2(transform.position.x + (2 * value), transform.position.y - 0.5f);
+        Vector2 _wallLineEnd = new Vector2(transform.position.x + (3 * value), transform.position.y - 0.5f);
         _wallHit = Physics2D.Linecast(transform.position, _wallLineEnd, _wallLayer);
         // 移動、壁に当たると反転
         _rb.velocity = Vector2.right * _moveSpeed * value;
