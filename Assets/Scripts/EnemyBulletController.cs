@@ -20,6 +20,7 @@ public class EnemyBulletController : MonoBehaviour
         _flip = _enemyController.FlipValue;
         _player = GameObject.FindGameObjectWithTag("Player");
         _playerInput = _player.GetComponent<Input>();
+        SoundManager.instance.BulletShot();
     }
 
     void Update()
@@ -30,22 +31,6 @@ public class EnemyBulletController : MonoBehaviour
         else
             _rb.WakeUp();
     }
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Player")
-    //    {
-    //        Destroy(this.gameObject);
-    //        GameManager.instance.PlayerDead();
-    //    }
-    //    else if (collision.gameObject.tag == "Wall")
-    //        Destroy(this.gameObject);
-    //    else if (collision.gameObject.tag == "Enemy" && Reflection)
-    //    {
-    //        GameManager.instance.KillCount();
-    //        Destroy(collision.gameObject);
-    //        Destroy(this.gameObject);
-    //    }
-    //}
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

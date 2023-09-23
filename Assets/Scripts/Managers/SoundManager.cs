@@ -7,6 +7,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioClip _startVoice;
     [SerializeField] AudioClip _restartSound;
     [SerializeField] AudioClip _pauseButtonSound;
+    [SerializeField] AudioClip _enemyDestroy;
+    [SerializeField] AudioClip _bulletShot;
+    [SerializeField] AudioClip _bulletReflection;
     [SerializeField] AudioSource _bgm;
     AudioSource _audioSource;
     bool _isPlaying = false;
@@ -49,5 +52,17 @@ public class SoundManager : MonoBehaviour
     {
         _bgm.Stop();
         _audioSource.PlayOneShot(_pauseButtonSound);
+    }
+    public void EnemyDestroy()
+    {
+        _audioSource.PlayOneShot(_enemyDestroy);
+    }
+    public void BulletShot()
+    {
+        _audioSource.PlayOneShot(_bulletShot);
+    }
+    public void BulletReflection()
+    {
+        _audioSource.PlayOneShot(_bulletReflection);
     }
 }

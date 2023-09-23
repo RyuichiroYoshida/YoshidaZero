@@ -7769,7 +7769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
-  _jumpPower: 9
+  _jumpPower: 10
   _jumpCoolTime: 2
   _jumpCoolTimer: 0
   _attackCoolTime: 0.5
@@ -8187,6 +8187,9 @@ MonoBehaviour:
   _startVoice: {fileID: 8300000, guid: fac5cb157891e7e409ed99650d534298, type: 3}
   _restartSound: {fileID: 8300000, guid: 50e415bac186b4044807e4624339d2ff, type: 3}
   _pauseButtonSound: {fileID: 8300000, guid: 50e415bac186b4044807e4624339d2ff, type: 3}
+  _enemyDestroy: {fileID: 8300000, guid: 5827e55b6f1e04c48a1b8aae6dda6853, type: 3}
+  _bulletShot: {fileID: 8300000, guid: 170a70636b220c74e890b0e258b23cfa, type: 3}
+  _bulletReflection: {fileID: 8300000, guid: 145dbbd4907e77a41949b1f412eb7ad0, type: 3}
   _bgm: {fileID: 523048778}
 --- !u!4 &6581308893757985472
 Transform:

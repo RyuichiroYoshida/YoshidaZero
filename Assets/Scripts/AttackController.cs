@@ -15,6 +15,7 @@ public class AttackController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet")
         {
+            SoundManager.instance.BulletReflection();
             EnemyBulletController enemyBullet = collision.gameObject.GetComponent<EnemyBulletController>();
             enemyBullet.FlipX *= -1;
             enemyBullet.Reflection = true;

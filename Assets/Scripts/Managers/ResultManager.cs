@@ -18,7 +18,7 @@ public class ResultManager : MonoBehaviour
     float _killCount = 0;
     float _timeCount = 0;
     bool _countEnd = false;
-    void Start()
+    void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
         _killCounter = GameManager.instance.KillCounter;
