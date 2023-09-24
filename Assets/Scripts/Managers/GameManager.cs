@@ -4,11 +4,12 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] float _killCounter = 0;
-    [SerializeField] float _timer = 0;
+    [SerializeField] float _timer = 300;
     [SerializeField] bool _isDead = false;
     [SerializeField] bool _stageTextEnd = false;
     [SerializeField] Text _timerText;
     [SerializeField] GameObject _restartButton;
+    [SerializeField] GameObject _deadImage;
     GameObject _player;
     AnimController _playerAnim;
     Input _playerinput;
@@ -39,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         if (_playerinput.IsPause || IsDead || !StageTextEnd)
             return;
-        _timer += Time.unscaledDeltaTime;
+        _timer -= Time.unscaledDeltaTime;
         if (_timerText != null)
             _timerText.text = _timer.ToString("000");
     }
@@ -48,6 +49,7 @@ public class GameManager : MonoBehaviour
         _isDead = true;
         _playerAnim.PlayerDeadAnim(true);
         _restartButton.SetActive(true);
+        _deadImage.SetActive(true);
 
     }
     public void KillCount()

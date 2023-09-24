@@ -10,24 +10,16 @@ public class ResultManager : MonoBehaviour
     [SerializeField] float _endTime = 0;
     [SerializeField] Text _killCounterText;
     [SerializeField] Text _timerText;
-    [SerializeField] GameObject _gameManager;
     [SerializeField] GameObject _button;
-    //[SerializeField] AudioClip _drumRoll;
     [SerializeField] AudioClip _drumRollEnd;
     AudioSource _audioSource;
     float _killCount = 0;
     float _timeCount = 0;
-    bool _countEnd = false;
-    void Awake()
-    {
-
-    }
     void OnEnable()
     {
         _audioSource = GetComponent<AudioSource>();
-        _killCounter = GameManager.instance.KillCounter;
-        _timer = GameManager.instance.Timer;
-        _gameManager.SetActive(false);
+        _killCounter = PlayerPrefs.GetFloat("Kill", 999999);
+        _timer = PlayerPrefs.GetFloat("Time", 999999);
         DoTimer();
         DoKillCounter();
     }
@@ -39,7 +31,7 @@ public class ResultManager : MonoBehaviour
         {
             _killCount = newValue;
             _killCounterText.text = str + _killCount.ToString("000000");
-        }, _killCounter, _endTime)
+        }, _killCounter * 1000, _endTime)
             .OnComplete(() =>
             {
                 _audioSource.Stop();
@@ -53,7 +45,7 @@ public class ResultManager : MonoBehaviour
         {
             _timeCount = newValue;
             _timerText.text = str + _timeCount.ToString("000000");
-        }, _timer, _endTime)
+        }, _timer * 1000, _endTime)
             .OnComplete(() => _button.SetActive(true));
     }
 }

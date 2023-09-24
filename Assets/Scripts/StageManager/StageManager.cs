@@ -18,6 +18,8 @@ public class StageManager : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             _stageClear = true;
+            PlayerPrefs.SetFloat("Kill", GameManager.instance.KillCounter);
+            PlayerPrefs.SetFloat("Time", GameManager.instance.Timer);
             SceneChange(_sceneName);
         }
     }
