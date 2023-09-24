@@ -15,17 +15,19 @@ public class TimeManager : MonoBehaviour
     }
     void Update()
     {
-        if (_playerInput.TimeAlter && !_timeAlterGauge.TimeAlterOverHeat)
+        if (_playerInput.TimeAlter && !_timeAlterGauge.TimeAlterOverHeat && !_playerInput.IsPause && !GameManager.instance.IsDead)
         {
             _timeAltering = true;
             Time.timeScale = 0.2f;
             _timeFadeImage.gameObject.SetActive(true);
+            SoundManager.instance.BgmSlow(0.5f);
         }
         else
         {
             _timeAltering = false;
             Time.timeScale = 1;
             _timeFadeImage.gameObject.SetActive(false);
+            SoundManager.instance.BgmSlow(1);
         }
     }
 }

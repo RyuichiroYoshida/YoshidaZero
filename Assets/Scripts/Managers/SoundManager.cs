@@ -44,25 +44,14 @@ public class SoundManager : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         _audioSource.PlayOneShot(_startVoice);
     }
-    public void ReatartSound()
-    {
-        _audioSource.PlayOneShot(_restartSound);
-    }
+    public void ReatartSound() => _audioSource.PlayOneShot(_restartSound);
+    public void EnemyDestroy() => _audioSource.PlayOneShot(_enemyDestroy);
+    public void BulletShot() => _audioSource.PlayOneShot(_bulletShot);
+    public void BulletReflection() => _audioSource.PlayOneShot(_bulletReflection);
+    public void BgmSlow(float value) => _bgm.pitch = value;
     public void PanelButtonSound()
     {
         _bgm.Stop();
         _audioSource.PlayOneShot(_pauseButtonSound);
-    }
-    public void EnemyDestroy()
-    {
-        _audioSource.PlayOneShot(_enemyDestroy);
-    }
-    public void BulletShot()
-    {
-        _audioSource.PlayOneShot(_bulletShot);
-    }
-    public void BulletReflection()
-    {
-        _audioSource.PlayOneShot(_bulletReflection);
     }
 }

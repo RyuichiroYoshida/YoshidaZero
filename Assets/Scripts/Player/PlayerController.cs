@@ -65,6 +65,8 @@ public class PlayerController : MonoBehaviour
         }
         else
             _rb.Sleep();
+        if (GameManager.instance.IsDead)
+            _rb.Sleep();
     }
     /// <summary>
     /// プレイヤー攻撃処理制御メソッド

@@ -57,6 +57,8 @@ public class Input : MonoBehaviour
         if (UnityEngine.Input.GetButtonUp("Pause"))
         {
             _isPause = !_isPause;
+            _xInput = 0;
+            _timeAlter = false;
         }
     }
 }

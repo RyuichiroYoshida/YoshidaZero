@@ -7,8 +7,12 @@ public class TimeAlterGauge : MonoBehaviour
     [SerializeField] float _timeAlterLimit = 10;
     [SerializeField] float _changeValueInterval = 0.5f;
     [SerializeField] bool _timeAlterOverHeat = false;
+    [SerializeField] GameObject _image;
+    Input _playerInput;
     Slider _gaugeSlider;
     TimeManager _timeManager;
+    Tweener _gaugeValueUp;
+    Tweener _gaugeValueDown;
     public float TimeAlterLimit => _timeAlterLimit;
     public bool TimeAlterOverHeat => _timeAlterOverHeat;
 
@@ -19,12 +23,28 @@ public class TimeAlterGauge : MonoBehaviour
         _timeManager = GetComponent<TimeManager>();
         _gaugeSlider.maxValue = _timeAlterLimit;
         _gaugeSlider.value = _timeAlterLimit;
+        _playerInput = GameObject.FindGameObjectWithTag("Player").GetComponent<Input>();
     }
     void Update()
     {
+        if (_playerInput.IsPause)
+        {
+            _gaugeValueUp.Pause();
+            _gaugeValueDown.Pause();
+            _image.SetActive(true);
+            return;
+        }
+        else
+        {
+            _gaugeValueUp.Play();
+            _gaugeValueDown.Play();
+            _image.SetActive(false);
+        }
         // ゲージが0以下になるとオーバーヒート状態になる
         if (_gaugeSlider.value <= 0)
+        {
             _timeAlterOverHeat = true;
+        }
         // ゲージが半分以上回復するとオーバーヒート状態を解除する
         else if (_gaugeSlider.value >= _timeAlterLimit / 2)
             _timeAlterOverHeat = false;
@@ -39,7 +59,7 @@ public class TimeAlterGauge : MonoBehaviour
     /// </summary>
     void GaugeValueUp()
     {
-        DOTween.To(() => _gaugeSlider.value, newValue => _gaugeSlider.value = newValue, _timeAlterLimit, _changeValueInterval)
+        _gaugeValueUp = DOTween.To(() => _gaugeSlider.value, newValue => _gaugeSlider.value = newValue, _timeAlterLimit, _changeValueInterval)
             .OnComplete(() => _timeAlterOverHeat = false);
     }
     /// <summary>
@@ -47,7 +67,7 @@ public class TimeAlterGauge : MonoBehaviour
     /// </summary>
     void GaugeValueDown()
     {
-        DOTween.To(() => _gaugeSlider.value, newValue => _gaugeSlider.value = newValue, -_timeAlterLimit, _changeValueInterval)
+        _gaugeValueDown = DOTween.To(() => _gaugeSlider.value, newValue => _gaugeSlider.value = newValue, -_timeAlterLimit, _changeValueInterval)
             .OnComplete(() => _timeAlterOverHeat = true);
     }
 }
