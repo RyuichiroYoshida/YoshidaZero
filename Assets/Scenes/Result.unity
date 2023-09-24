@@ -225,7 +225,6 @@ MonoBehaviour:
   _timerText: {fileID: 1883996904}
   _gameManager: {fileID: 377466128}
   _button: {fileID: 1287807209}
-  _drumRoll: {fileID: 8300000, guid: f5422897e6f5fc64b89298e5e796e07b, type: 3}
   _drumRollEnd: {fileID: 8300000, guid: 6dad08280ae822a4ea4da585067af879, type: 3}
 --- !u!82 &592262042
 AudioSource:

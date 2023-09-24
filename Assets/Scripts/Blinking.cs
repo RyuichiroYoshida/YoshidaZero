@@ -7,6 +7,6 @@ public class Blinking : MonoBehaviour
     [SerializeField] Text _text;
     void Start()
     {
-        _text.DOFade(0.3f, 1f).SetLoops(-1, LoopType.Yoyo);
+        _text.DOFade(0.3f, 1f).SetLoops(-1, LoopType.Yoyo).SetLink(this.gameObject);
     }
 }
