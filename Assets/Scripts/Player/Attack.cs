@@ -30,8 +30,8 @@ public class Attack : MonoBehaviour
     void Update()
     {
         PlayerZangeki();
-        if (UnityEngine.Input.GetButton("Fire2"))
-            DebugMove();
+        //if (UnityEngine.Input.GetButton("Fire2"))
+        //    DebugMove();
     }
 
     /// <summary>
@@ -60,20 +60,20 @@ public class Attack : MonoBehaviour
     /// <summary>
     /// プレイヤーを右クリックの座標に戻す（デバッグ用）
     /// </summary>
-    public void DebugMove()
-    {
-        if (_isHitting)
-        {
-            _playerTransform.position = Vector3.zero;
-            _isHitting = false;
-        }
-        else
-        {
-            _isAttacking = true;
-            float distance = Vector2.Distance(this.transform.position, _target);
-            _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, _target, _debugMoveSpeed * Time.deltaTime);
-        }
-    }
+    //public void DebugMove()
+    //{
+    //    if (_isHitting)
+    //    {
+    //        _playerTransform.position = Vector3.zero;
+    //        _isHitting = false;
+    //    }
+    //    else
+    //    {
+    //        _isAttacking = true;
+    //        float distance = Vector2.Distance(this.transform.position, _target);
+    //        _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, _target, _debugMoveSpeed * Time.deltaTime);
+    //    }
+    //}
     /// <summary>
     /// アニメーションイベントで攻撃アニメーションの終了通知用メソッド
     /// </summary>
