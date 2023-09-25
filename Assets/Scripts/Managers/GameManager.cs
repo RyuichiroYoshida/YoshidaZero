@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
         if (_playerinput.IsPause || IsDead || !StageTextEnd)
             return;
         _timer -= Time.unscaledDeltaTime;
+        if (_timer <= 0)
+            PlayerDead();
         if (_timerText != null)
             _timerText.text = _timer.ToString("000");
     }
