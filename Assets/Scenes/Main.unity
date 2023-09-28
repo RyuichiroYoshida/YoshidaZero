@@ -12392,7 +12392,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 5022903489275332963}
         m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-        m_MethodName: ReatartSound
+        m_MethodName: RestartSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
