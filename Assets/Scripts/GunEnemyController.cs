@@ -9,9 +9,9 @@ public class GunEnemyController : EnemyBase
     [SerializeField] GameObject _bulletPrefab;
     [SerializeField] LayerMask _wallLayer;
     [SerializeField] LayerMask _playerLayer;
-    [SerializeField, Tooltip("ƒfƒoƒbƒO—p")] float _flipValue = 1;
-    [SerializeField, Tooltip("ƒfƒoƒbƒO—p")] RaycastHit2D _wallHit;
-    [SerializeField, Tooltip("ƒfƒoƒbƒO—p")] RaycastHit2D _playerHit;
+    [SerializeField, Tooltip("ï¿½fï¿½oï¿½bï¿½Oï¿½p")] float _flipValue = 1;
+    [SerializeField, Tooltip("ï¿½fï¿½oï¿½bï¿½Oï¿½p")] RaycastHit2D _wallHit;
+    [SerializeField, Tooltip("ï¿½fï¿½oï¿½bï¿½Oï¿½p")] RaycastHit2D _playerHit;
     Rigidbody2D _rb;
     SpriteRenderer _spriteRenderer;
     float _timer = 0;
@@ -46,26 +46,26 @@ public class GunEnemyController : EnemyBase
     }
 
     /// <summary>
-    /// ƒGƒlƒ~[‚Ì•ÇŒŸ’mƒ‰ƒCƒ“ƒLƒƒƒXƒg‚ÆˆÚ“®ŠÇ—
+    /// ï¿½Gï¿½lï¿½~ï¿½[ï¿½Ì•ÇŒï¿½ï¿½mï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Xï¿½gï¿½ÆˆÚ“ï¿½ï¿½Ç—ï¿½
     /// </summary>
-    /// <param name="value">ˆÚ“®•ûŒü‚Ì“]Š·‚Ìˆø”</param>
+    /// <param name="value">ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì“]ï¿½ï¿½ï¿½Ìˆï¿½ï¿½ï¿½</param>
     void EnemyMove(float value)
     {
-        // •ÇŒŸ’m—pƒ‰ƒCƒ“ƒLƒƒƒXƒg
-        Vector2 _wallLineEnd = new Vector2(transform.position.x + (3 * value), transform.position.y - 0.5f);
-        _wallHit = Physics2D.Linecast(transform.position, _wallLineEnd, _wallLayer);
-        // ˆÚ“®A•Ç‚É“–‚½‚é‚Æ”½“]
+        // ï¿½ÇŒï¿½ï¿½mï¿½pï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Xï¿½g
+        var wallLineEnd = new Vector2(transform.position.x + (3 * value), transform.position.y - 0.5f);
+        _wallHit = Physics2D.Linecast(transform.position, wallLineEnd, _wallLayer);
+        // ï¿½Ú“ï¿½ï¿½Aï¿½Ç‚É“ï¿½ï¿½ï¿½ï¿½ï¿½Æ”ï¿½ï¿½]
         _rb.velocity = Vector2.right * _moveSpeed * value;
-        // ƒ‰ƒCƒ“ƒLƒƒƒXƒg‚ğ‰Â‹‰»
-        Debug.DrawLine(transform.position, _wallLineEnd, Color.blue);
+        // ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Âï¿½ï¿½ï¿½
+        Debug.DrawLine(transform.position, wallLineEnd, Color.blue);
     }
 
     void EnemyAttack(float value)
     {
-        // ƒvƒŒƒCƒ„[ŒŸ’m—pƒ‰ƒCƒ“ƒLƒƒƒXƒg
+        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½mï¿½pï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Xï¿½g
         Vector2 _playerLineEnd = new Vector2(transform.position.x + (_detectionRange * value), transform.position.y);
         _playerHit = Physics2D.Linecast(transform.position, _playerLineEnd, _playerLayer);
-        // ƒvƒŒƒCƒ„[ŒŸ’m‚É‚»‚Ìê‚É’â~‚·‚é
+        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½mï¿½ï¿½ï¿½É‚ï¿½ï¿½Ìï¿½É’ï¿½~ï¿½ï¿½ï¿½ï¿½
         if (_playerHit)
         {
             this._rb.velocity = Vector2.zero;
@@ -75,7 +75,7 @@ public class GunEnemyController : EnemyBase
                 _timer = 0;
             }
         }
-        // ƒ‰ƒCƒ“ƒLƒƒƒXƒg‚ğ‰Â‹‰»
+        // ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Âï¿½ï¿½ï¿½
         Debug.DrawLine(transform.position, _playerLineEnd, Color.red);
     }
 }

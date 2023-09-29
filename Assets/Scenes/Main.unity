@@ -12587,6 +12587,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7812832306469793946, guid: d9e1e863f31740a45b61993735fa8344, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8565137759655285904, guid: d9e1e863f31740a45b61993735fa8344, type: 3}
       propertyPath: m_RootOrder
       value: -1
