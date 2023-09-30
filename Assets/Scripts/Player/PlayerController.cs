@@ -36,12 +36,12 @@ public class PlayerController : MonoBehaviour
         Attack();
     }
 
-    /// <summary>Jump‹““®ŠÇ—ƒƒ\ƒbƒh</summary>
+    /// <summary>Jumpï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½\ï¿½bï¿½h</summary>
     void Jump()
     {
         _playerAnimController.PlayerJumpAnim(false);
         _jumpCoolTimer -= Time.deltaTime;
-        if (_isGround == true && PlayerInput.IsJumping == true && _jumpCoolTimer <= 0) // Ú’n‚µ‚Ä‚¢‚éAƒWƒƒƒ“ƒv“ü—Í‚ª‚ ‚éAƒN[ƒ‹ƒ_ƒEƒ“ƒ^ƒCƒ}[‚ª0ˆÈ‰º
+        if (_isGround == true && PlayerInput.IsJumping == true && _jumpCoolTimer <= 0) // ï¿½Ú’nï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Aï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½Nï¿½[ï¿½ï¿½ï¿½_ï¿½Eï¿½ï¿½ï¿½^ï¿½Cï¿½}ï¿½[ï¿½ï¿½0ï¿½È‰ï¿½
         {
             _jumpCoolTimer = _jumpCoolTime;
             _rb.velocity = new Vector2(0, _jumpPower);
@@ -49,19 +49,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /// <summary>…•½ˆÚ“®ŠÇ—ƒƒ\ƒbƒh</summary>
+    /// <summary>ï¿½ï¿½ï¿½ï¿½ï¿½Ú“ï¿½ï¿½Ç—ï¿½ï¿½ï¿½ï¿½\ï¿½bï¿½h</summary>
     void Move()
     {
-        // ƒvƒŒƒCƒ„[‚ÌUŒ‚ƒAƒjƒ[ƒVƒ‡ƒ“‚ªI—¹‚µ‚Ä‚¢‚é‚Æ‚«ˆÚ“®ˆ—‚ğs‚¤
-        // ƒvƒŒƒCƒ„[‚ÌUŒ‚ƒAƒjƒ[ƒVƒ‡ƒ“‚ªÀs’†‚Í•¨—‹““®‚ğ~‚ß‚é
+        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌUï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Ú“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
+        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ÌUï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Í•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½ß‚ï¿½
         if (_playerAttack.AttackEnd)
         {
-        _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _rb.velocity.y);
-        // ƒvƒŒƒCƒ„[‚ÌX²“ü—Í‚ğó‚¯æ‚Á‚½‚Æ‚«ƒAƒjƒ[ƒ^[‚Ìbool‚ğØ‚è‘Ö‚¦‚é
-        if (_playerInput.XInput != 0)
-            _playerAnimController.PlayerMoveAnim(true);
-        else
-            _playerAnimController.PlayerMoveAnim(false);
+            _rb.velocity = new Vector2(_moveSpeed * _playerInput.XInput, _rb.velocity.y);
+            // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½Xï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ó‚¯ï¿½ï¿½ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½ï¿½boolï¿½ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½ï¿½
+            if (_playerInput.XInput != 0)
+                _playerAnimController.PlayerMoveAnim(true);
+            else
+                _playerAnimController.PlayerMoveAnim(false);
         }
         else
             _rb.Sleep();
@@ -69,12 +69,12 @@ public class PlayerController : MonoBehaviour
             _rb.Sleep();
     }
     /// <summary>
-    /// ƒvƒŒƒCƒ„[UŒ‚ˆ—§Œäƒƒ\ƒbƒh
+    /// ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½äƒï¿½\ï¿½bï¿½h
     /// </summary>
     void Attack()
     {
         _attackCoolTimer -= Time.deltaTime;
-        // ƒvƒŒƒCƒ„[‚ªUŒ‚ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚Ä‚¢‚é‚©‚ÂAƒN[ƒ‹ƒ^ƒCƒ€‚ª0‚©‚ÂAUŒ‚ƒAƒjƒ[ƒVƒ‡ƒ“‚ªI—¹‚µ‚Ä‚¢‚é‚ÉUŒ‚ˆ—‚ğs‚¤
+        // ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½{ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½ÂAï¿½Nï¿½[ï¿½ï¿½ï¿½^ï¿½Cï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ÂAï¿½Uï¿½ï¿½ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½éï¿½ÉUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
         if (PlayerInput.IsAttack && _attackCoolTimer <= 0 && _playerAttack.AttackEnd)
         {
             _attackCoolTimer = _attackCoolTime;
@@ -85,19 +85,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            _isGround = true;
-            _playerAnimController.PlayerAirAnim(true);
-        }
+        if (collision.gameObject.CompareTag("Ground"))
+            return;
+        _isGround = true;
+        _playerAnimController.PlayerAirAnim(true);
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            _isGround = false;
-            _playerAnimController.PlayerAirAnim(false);
-        }
+        if (collision.gameObject.CompareTag("Ground"))
+            return;
+        _isGround = false;
+        _playerAnimController.PlayerAirAnim(false);
     }
 }

@@ -43,8 +43,7 @@ public class GameManager : MonoBehaviour
         _timer -= Time.unscaledDeltaTime;
         if (_timer <= 0)
             PlayerDead();
-        if (_timerText != null)
-            _timerText.text = _timer.ToString("000");
+        _timerText.text = _timer.ToString("000");
     }
     public void PlayerDead()
     {
@@ -54,8 +53,5 @@ public class GameManager : MonoBehaviour
         _deadImage.SetActive(true);
 
     }
-    public void KillCount()
-    {
-        _killCounter++;
-    }
+    public void KillCount() => _killCounter++;
 }

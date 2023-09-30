@@ -10,11 +10,5 @@ public class CanvasController : MonoBehaviour
         _pausePanel = transform.Find("PausePanel").gameObject;
     }
 
-    void Update()
-    {
-        if (_playerInput.IsPause)
-            _pausePanel.SetActive(true);
-        else
-            _pausePanel.SetActive(false);
-    }
+    void Update() => _pausePanel.SetActive(_playerInput.IsPause ? true : false);
 }
