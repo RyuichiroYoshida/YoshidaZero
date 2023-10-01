@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float _timer = 300;
     [SerializeField] bool _isDead = false;
     [SerializeField] bool _stageTextEnd = false;
+    [SerializeField] bool _godMode = false;
     [SerializeField] Text _timerText;
     [SerializeField] GameObject _restartButton;
     [SerializeField] GameObject _deadImage;
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
     }
     public void PlayerDead()
     {
+        if (_godMode)
+            return;
         _isDead = true;
         _playerAnim.PlayerDeadAnim(true);
         _restartButton.SetActive(true);
