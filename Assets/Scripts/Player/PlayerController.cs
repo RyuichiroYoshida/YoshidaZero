@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (!collision.gameObject.CompareTag("Ground"))
             return;
         _isGround = true;
         _playerAnimController.PlayerAirAnim(true);
@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (!collision.gameObject.CompareTag("Ground"))
             return;
         _isGround = false;
         _playerAnimController.PlayerAirAnim(false);
