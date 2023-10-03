@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     Attack _playerAttack;
     Input _playerInput;
     public Input PlayerInput => _playerInput;
-    public bool IsGruound => _isGround;
+    public bool IsGround => _isGround;
     public bool IsAttackReady { get => _isAttackReady; set => _isAttackReady = value; }
 
     void Start()
