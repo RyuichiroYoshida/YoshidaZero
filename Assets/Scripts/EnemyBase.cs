@@ -10,7 +10,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     void Update()
     {
-        // ƒGƒlƒ~[‚ª~‚Ü‚é‚Ì‚ÍA(ƒ|[ƒY’†@ƒvƒŒƒCƒ„[‚ª€‚ñ‚Å‚¢‚é@Å‰‚Ì€”õ‚ªI‚í‚Á‚Ä‚¢‚È‚¢)
+        // ï¿½Gï¿½lï¿½~ï¿½[ï¿½ï¿½ï¿½~ï¿½Ü‚ï¿½Ì‚ÍA(ï¿½|ï¿½[ï¿½Yï¿½ï¿½ï¿½@ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½@ï¿½Åï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½)ï¿½ï¿½
         if (_playerInput.IsPause || GameManager.instance.IsDead || !GameManager.instance.StageTextEnd)
             transform.DOPause();
         else
@@ -22,7 +22,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
             GameManager.instance.PlayerDead();
     }
 }

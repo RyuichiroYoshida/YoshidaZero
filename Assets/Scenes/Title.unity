@@ -2800,8 +2800,10 @@ MonoBehaviour:
   _timer: 0
   _isDead: 0
   _stageTextEnd: 0
+  _godMode: 0
   _timerText: {fileID: 0}
   _restartButton: {fileID: 0}
+  _deadImage: {fileID: 0}
 --- !u!1 &1041273687
 GameObject:
   m_ObjectHideFlags: 0
