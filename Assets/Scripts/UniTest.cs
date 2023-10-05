@@ -1,24 +1,21 @@
 using System;
-using UnityEngine;
+using System.Threading;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 using DG.Tweening;
 
 public class UniTest : MonoBehaviour
 {
     private async void Start()
     {
-        print("start");
-        await UniTask.WhenAll(WaitSce(1), WaitSce(2), WaitSce(3));
-        print("taskEnd");
+        var cts = new CancellationTokenSource();
+        var token = cts.Token;
+        await UniTask.WhenAll(WaitSce(1, token, cts), WaitSce(5, token, cts));
+        cts.Cancel();
     }
-
-    private async UniTask StartTween(float sec)
+    private async UniTask WaitSce(float sec, CancellationToken token, CancellationTokenSource cts)
     {
-        await transform.DOMoveX(5, sec);
-    }
-    private async UniTask WaitSce(float sec)
-    {
-        await UniTask.Delay(TimeSpan.FromSeconds(sec));
+        await UniTask.Delay(TimeSpan.FromSeconds(sec), cancellationToken: token);
         print(sec);
     }
 }
