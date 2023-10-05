@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2091738411682629907}
   - component: {fileID: 2128524023889358672}
   m_Layer: 0
-  m_Name: Effect
+  m_Name: SparkEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
