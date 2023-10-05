@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// �v���C���[�U���������䃁�\�b�h
     /// </summary>
-    void Attack()
+    private void Attack()
     {
         _attackCoolTimer -= Time.deltaTime;
         // �v���C���[���U���{�^���������Ă��邩�A�N�[���^�C����0���A�U���A�j���[�V�������I�����Ă��鎞�ɍU���������s��

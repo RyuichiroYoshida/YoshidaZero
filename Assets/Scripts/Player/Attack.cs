@@ -5,10 +5,6 @@ using DG.Tweening;
 public class Attack : MonoBehaviour
 {
     [SerializeField] GameObject _zangekiPrefab;
-    [SerializeField] float _attackDamage = 10;
-    [SerializeField] float _debugMoveSpeed = 100;
-    [SerializeField] bool _isHitting = false;
-    [SerializeField] bool _isAttacking = false;
     [SerializeField] bool _attackEnd = true;
     GameObject _zangekiObj;
     Rigidbody2D _rb;
@@ -18,7 +14,6 @@ public class Attack : MonoBehaviour
     PlayerController _playerController;
     AnimController _animController;
     public bool AttackEnd => _attackEnd;
-    public Vector2 MousePosition => _mousePosition;
 
     void Start()
     {
@@ -30,14 +25,12 @@ public class Attack : MonoBehaviour
     void Update()
     {
         PlayerZangeki();
-        //if (UnityEngine.Input.GetButton("Fire2"))
-        //    DebugMove();
     }
 
     /// <summary>
     /// 左クリック入力を受け取り、向いている方向に斬撃を飛ばす
     /// </summary>
-    public void PlayerZangeki()
+    private void PlayerZangeki()
     {
         if (_playerController.IsAttackReady && _attackEnd)
         {
@@ -56,24 +49,6 @@ public class Attack : MonoBehaviour
             }
         }
     }
-
-    /// <summary>
-    /// プレイヤーを右クリックの座標に戻す（デバッグ用）
-    /// </summary>
-    //public void DebugMove()
-    //{
-    //    if (_isHitting)
-    //    {
-    //        _playerTransform.position = Vector3.zero;
-    //        _isHitting = false;
-    //    }
-    //    else
-    //    {
-    //        _isAttacking = true;
-    //        float distance = Vector2.Distance(this.transform.position, _target);
-    //        _playerTransform.position = Vector3.MoveTowards(_playerTransform.position, _target, _debugMoveSpeed * Time.deltaTime);
-    //    }
-    //}
     /// <summary>
     /// アニメーションイベントで攻撃アニメーションの終了通知用メソッド
     /// </summary>
@@ -85,7 +60,7 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Enemy"))
             Destroy(collision.gameObject);
     }
 }

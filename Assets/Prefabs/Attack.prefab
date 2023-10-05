@@ -172,3 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _destroyTimer: 0.5
+  _effectPrefab: {fileID: 570004081281777832, guid: 8c4ce1c1fe0549645b6a3e756e6f6bbc, type: 3}

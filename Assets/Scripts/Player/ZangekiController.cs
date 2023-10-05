@@ -9,28 +9,19 @@ public class ZangekiController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        Transform _playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        //if (_playerTransform.localScale.x == 1)
-        //{
-        //    _rb.velocity = Vector2.right * _zangekiSpeed;
-        //}
-        //else
-        //{
-        //    _rb.velocity = Vector2.left * _zangekiSpeed;
-        //}
         Destroy(gameObject, 0.5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.instance.KillCount();
             Destroy(collision.gameObject);
         }
-        if (collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.CompareTag("Bullet"))
         {
-            EnemyBulletController enemyBullet = collision.gameObject.GetComponent<EnemyBulletController>();
+            collision.gameObject.TryGetComponent<EnemyBulletController>(out var enemyBullet);
             enemyBullet.FlipX *= -1;
             enemyBullet.Reflection = true;
         }

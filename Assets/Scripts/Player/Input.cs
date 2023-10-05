@@ -36,23 +36,23 @@ public class Input : MonoBehaviour
         }
     }
 
-    public void PlayerMove()
+    private void PlayerMove()
     {
         _xInput = UnityEngine.Input.GetAxisRaw("Horizontal");
         IsJumping = UnityEngine.Input.GetButton("Jump");
     }
 
-    public void PlayerAction()
+    private void PlayerAction()
     {
         IsAttack = UnityEngine.Input.GetButton("Fire1");
     }
 
-    public void PlayerTimeAlter()
+    private void PlayerTimeAlter()
     {
         _timeAlter = UnityEngine.Input.GetButton("Fire3");
     }
 
-    public void Pause()
+    private void Pause()
     {
         if (UnityEngine.Input.GetButtonUp("Pause"))
         {
