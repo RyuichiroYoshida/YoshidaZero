@@ -250,7 +250,7 @@ MonoBehaviour:
   _timer: 300
   _isDead: 0
   _stageTextEnd: 0
-  _godMode: 1
+  _godMode: 0
   _timerText: {fileID: 1045176511}
   _restartButton: {fileID: 1168572211}
   _deadImage: {fileID: 1076688663}
